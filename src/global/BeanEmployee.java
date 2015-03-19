@@ -6,62 +6,59 @@ import java.io.Serializable;
  */
 public class BeanEmployee implements Serializable {
 	
-	private int customerID;
+	private int employeeID;
 	private String firstName;
 	private String otherName;
 	private String lastName;
-	private String address;
-	private String postcode;
-	private String city;
-	private String country;
 	private String DOB;
+	private String startDate;
+	private double salary;
 	private String email;
 	private String tel;
-	private String mob;
+	private String role;
+	private int managerID;
 	//declare constructors
 	public BeanEmployee() {
 
 	}
 
-	public BeanEmployee(int custID, String fName, String oName, String lName, String cAddress, String cPostcode, String cCity, String cCountry, String cDOB, String cEmail, String cTel, String cMob) {
-		customerID=custID;
+	public BeanEmployee(int employeeID, String fName, String oName, String lName, String DOB, String startDate, double salary, String email, String tel, String role, int managerID) {
+		this.employeeID=employeeID;
 		firstName=fName;
 		otherName=oName;
 		lastName=lName;
-		address=cAddress;
-		postcode=cPostcode;
-		city=cCity;
-		country=cCountry;
-		DOB=cDOB;
-		email=cEmail;
-		tel=cTel;
-		mob=cMob;
+		this.DOB=DOB;
+		this.startDate=startDate;
+		this.salary=salary;
+		this.email=email;
+		this.tel=tel;
+		this.role=role;
+		this.managerID=managerID;
 	}
 	
-	public BeanEmployee(String fName, String oName, String lName, String cAddress, String cPostcode, String cCity, String cCountry, String cDOB, String cEmail, String cTel, String cMob) {
+	public BeanEmployee( String fName, String oName, String lName, String DOB, String startDate, double salary, String email, String tel, String role, int managerID) {
 		firstName=fName;
 		otherName=oName;
 		lastName=lName;
-		address=cAddress;
-		postcode=cPostcode;
-		city=cCity;
-		country=cCountry;
-		DOB=cDOB;
-		email=cEmail;
-		tel=cTel;
-		mob=cMob;
+		this.DOB=DOB;
+		this.startDate=startDate;
+		this.salary=salary;
+		this.email=email;
+		this.tel=tel;
+		this.role=role;
+		this.managerID=managerID;
 	}
 	/*
 	 * define all getters and setters here for each instance variable also a
 	 * toString method
 	 */
 	
-	public int getCustID() {
-		return customerID;
+	public int getEmpID() {
+		return employeeID;
 	}
 
-	public void setCustID(int custID) {
-		this.customerID=custID;
+	public void setEmployeeID(int empID) {
+		this.employeeID=empID;
 	}
 	
 	public String getFirstName() {
@@ -88,36 +85,28 @@ public class BeanEmployee implements Serializable {
 		this.lastName = lName;
 	}
 	
-	public String getAddress() {
-		return address;
+	public String getStartDate() {
+		return startDate;
 	}
 
-	public void setAddress(String cAddress) {
-		this.address = cAddress;
+	public void setAddress(String startDate) {
+		this.startDate = startDate;
 	}
 	
-	public String getCity() {
-		return city;
+	public int getManagerID() {
+		return managerID;
 	}
 
-	public void setCity(String custCity) {
-		this.city = custCity;
+	public void setManagerID(int managerID) {
+		this.managerID = managerID;
 	}
 	
-	public String getCountry() {
-		return country;
+	public double getSalary() {
+		return salary;
 	}
 
-	public void setCountry(String cCountry) {
-		this.country = cCountry;
-	}
-	
-	public String getPostcode() {
-		return postcode;
-	}
-
-	public void setPostcode(String pcode) {
-		this.postcode = pcode;
+	public void setSalary(double salary) {
+		this.salary = salary;
 	}
 	
 	public String getEmailAddress() {
@@ -144,22 +133,21 @@ public class BeanEmployee implements Serializable {
 		this.tel = cTel;
 	}
 	
-	public String getMob() {
-		return mob;
+	public String getRole() {
+		return role;
 	}
 
-	public void setMob(String cMob) {
-		this.mob = cMob;
+	public void setRole(String role) {
+		this.role = role;
 	}
 
 	@Override
 	public String toString() {
-		return "BeanCustomer [customerID=" + customerID + ", firstName="
+		return "BeanEmployee [employeeID=" + employeeID + ", firstName="
 				+ firstName + ", otherName=" + otherName + ", lastName="
-				+ lastName + ", address=" + address + ", postcode=" + postcode
-				+ ", city=" + city + ", country=" + country + ", DOB=" + DOB
-				+ ", email=" + email + ", tel=" + tel + ", mob=" + mob + "]";
+				+ lastName + ", DOB=" + DOB + ", startDate=" + startDate
+				+ ", salary=" + salary + ", email=" + email + ", tel=" + tel
+				+ ", role=" + role + ", managerID=" + managerID + "]";
 	}
 
-	
 }
