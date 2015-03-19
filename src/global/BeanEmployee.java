@@ -36,7 +36,7 @@ public class BeanEmployee implements Serializable {
 		this.managerID=managerID;
 	}
 	
-	public BeanEmployee( String fName, String oName, String lName, String DOB, String startDate, double salary, String email, String tel, String role, int managerID) {
+	public BeanEmployee(String fName, String oName, String lName, String DOB, String startDate, double salary, String email, String tel, String role, int managerID) {
 		firstName=fName;
 		otherName=oName;
 		lastName=lName;
