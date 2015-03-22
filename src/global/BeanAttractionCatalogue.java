@@ -35,7 +35,7 @@ public class BeanAttractionCatalogue implements Serializable{
 	public void setAttName(String attName){
 		this.attName = attName;
 	}
-	public String AttDescript (){
+	public String getAttDescript (){
 		return attDescript;
 	}
 	public void setAttDescript(String attDescript){
