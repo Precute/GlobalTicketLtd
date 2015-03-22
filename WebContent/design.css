@@ -1,0 +1,196 @@
+@CHARSET "ISO-8859-1";
+/* 13153439 Huseyin Arpalikli 
+This is where the design for the HTML is placed*/
+body {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+	background: #E6E6E6;
+}
+
+p {
+	padding: 10px;
+}
+
+#wrapper {
+	width: 100%;
+	min-width: 50px;
+	max-width: 2000px;
+	margin: 0 auto;
+}
+
+#headerwrap {
+	width: 100%;
+	float: left;
+	margin: 0 auto;
+}
+
+#header {
+	height: 75px;
+	background: #9BCA3E /*#FF9900*/;
+	border-radius: 10px;
+	border: 1px solid #8cb832;
+	color: #ffffff;
+	margin: 5px;
+	padding: 10px 0px 3px 15px;
+}
+
+#logo {
+	float: left;
+	padding-right: 15px;
+}
+
+#navigationwrap {
+	width: 100%;
+	float: left;
+	margin: 0 auto;
+}
+
+#navigation {
+	height: 40px;
+	border-radius: 10px;
+	margin: 5px;
+}
+
+/*Nav Bar:*/
+#tabs24 {
+	position: relative;
+	height: 43px;
+	font-size: 11px;
+	text-transform: uppercase;
+	background: #E6E6E6 url("images/time4bed_bg.gif") repeat-x bottom left;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+#tabs24 ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	width: auto;
+	float: left;
+}
+
+#tabs24 ul li {
+	display: block;
+	float: left;
+	margin: 0 2px;
+}
+
+#tabs24 ul li a {
+	display: block;
+	float: left;
+	color: #ffdab6;
+	text-decoration: none;
+	padding: 0 0 0 25px;
+	height: 43px;
+	line-height: 50px;
+}
+
+#tabs24 ul li a span {
+	display: block;
+	float: left;
+	padding: 0 25px 0 0;
+	height: 31px;
+	width: auto;
+}
+
+#tabs24 ul li a:hover {
+	color: #fff;
+}
+
+#tabs24 ul li a:hover span {
+	display: block;
+	cursor: pointer;
+}
+
+#tabs24 ul li a.current, #tabs24 ul li a.current:hover {
+	color: #894d12;
+	background: transparent url("images/time2bed_left-ON.gif") no-repeat top
+		left;
+}
+
+#tabs24 ul li a.current span {
+	background: transparent url("images/time2bed_right-ON.gif") no-repeat
+		top right;
+	height: 43px;
+}
+/* End NavBar*/
+#contentliquid {
+	float: left;
+	width: 100%;
+}
+
+#contentwrap {
+	margin-left: 210px;
+	float: left;
+	width: auto; height: auto
+}
+
+#content {
+	background: #3ABBC9; /*from white*/
+	border-radius: 10px;
+	border: 1px solid #ebebeb;
+	margin: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top:10px;
+	padding-bottom:10px;
+	color: #FFFFFF;
+	width: auto; height: auto
+}
+
+.submitLink {
+background-color: transparent;
+text-decoration: underline;
+border: none;
+color: blue;
+cursor: pointer;
+}
+
+#leftcolumnwrap {
+	width: 215px;
+	margin-left: -100%;
+	float: left;
+	height: auto;
+}
+
+#leftcolumn {
+	background: #FFDE0A;
+	border-radius: 10px;
+	border: 1px solid #ebca00;
+	margin: 5px;
+	color: #333;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+
+#footerwrap {
+	width: 100%;
+	float: left;
+	margin: 0 auto;
+	clear: both;
+}
+
+#footer {
+	height: 60px;
+	background: #FFB92A;
+	border-radius: 10px;
+	border: 1px solid #ffb10f;
+	margin: 5px;
+	color: #333;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+#footer span {
+	float: left;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+
+#accessibility {
+	float: right;
+	padding-top: 5px;
+	padding-right: 5px;
+}
