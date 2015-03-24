@@ -1,12 +1,11 @@
 package global;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import congo.BeanMusicRec;
-
 
 public class DAOAttraction {
 	Connection connection = null;
@@ -23,26 +22,27 @@ public class DAOAttraction {
 		return conn;
 	}
 	
-	public ArrayList<BeanAttraction> findAtrByAttTypePriceCountry(String type, float minPrice, float maxPrice, String country) {
-		ArrayList<BeanAttraction> atr = null;
+	public ArrayList<BeanAttraction> findAtrByAttTypePriceCountry(String type, float minPrice, float maxPrice, String city, String country) {
+		ArrayList<BeanAttraction> att = null;
 		try {
-			String queryString = "SELECT c.attractionID, attName, attDescript, attAvailabilityCount, attType, city, country, tktType, ticketprice FROM global_attractionpricelist p, global_tickettype tt, global_attractioncatalogue c, global_attractiontype att, global_location l WHERE l.locationID=c.locationID AND att.attTypeID=c.attTypeID AND p.attractionID=c.attractionID AND p.tktTypeID=tt.tktTypeID AND (att.atttype IS NULL OR att.atttype LIKE '%"+type+"%') AND (l.country IS NULL OR l.country LIKE '%"+country+"%') AND (p.ticketprice IS NULL OR p.ticketprice >= "+minPrice+" AND p.ticketprice <= "+maxPrice+")";
+			String queryString = "SELECT c.attractionID, attName, attDescript, attAvailabilityCount, attType, city, country, tktType, ticketPrice FROM global_attractionpricelist p, global_tickettype tt, global_attractioncatalogue c, global_attractiontype att, global_location l WHERE l.locationID=c.locationID AND att.attTypeID=c.attTypeID AND p.attractionID=c.attractionID AND p.tktTypeID=tt.tktTypeID AND (att.atttype IS NULL OR att.atttype LIKE '%"+type+"%') AND (l.country IS NULL OR l.country LIKE '%"+country+"%') AND (l.city IS NULL OR l.city LIKE '%"+city+"%') AND (p.ticketprice IS NULL OR p.ticketprice >= "+minPrice+" AND p.ticketprice <= "+maxPrice+")";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			rs1 = ptmt.executeQuery();
 
-			atr = new ArrayList<BeanAttraction>();
+			att = new ArrayList<BeanAttraction>();
 			while (rs1.next()) {
 				BeanAttraction temp = new BeanAttraction();
-				temp.setRecID(rs1.getInt("recording_id"));
-				temp.setArtistName(rs1.getString("artist_name"));
-				temp.setRecTitle(rs1.getString("title"));
-				temp.setCategory(rs1.getString("category"));
-				temp.setImageName(rs1.getString("image_name"));
-				temp.setNumTracks(rs1.getInt("num_tracks"));
-				temp.setPrice(rs1.getFloat("price"));
-				temp.setStockCount(rs1.getInt("stock_count"));
-				art.add(temp);
+				temp.setAttractionID(rs1.getInt("attractionID"));
+				temp.setAttName(rs1.getString("attName"));
+				temp.setAttDescript(rs1.getString("attDescript"));
+				temp.setAttAvailabilityCount(rs1.getInt("attAvailabilityCount"));
+				temp.setAttType(rs1.getString("attType"));
+				temp.setCity(rs1.getString("city"));
+				temp.setCountry(rs1.getString("country"));
+				temp.setTicketType(rs1.getString("tktType"));
+				temp.setTktPrice(rs1.getFloat("ticketPrice"));
+				att.add(temp);
 
 			}
 	
@@ -63,12 +63,12 @@ public class DAOAttraction {
 			}
 
 		}
-		return atr;
+		return att;
 
 	}
 	
 	//get music minimum and maximum prices in database and return in array
-		public Float[] getAtrTicketsMinMaxPrice() {
+		public Float[] getAttTicketsMinMaxPrice() {
 			Float[] minMax= new Float[2];
 			try {
 				String queryString = "SELECT ROUND(MIN(ticketprice),2) AS MIN, ROUND(MAX(ticketprice),2) AS MAX FROM global_attractionpricelist";
@@ -99,5 +99,51 @@ public class DAOAttraction {
 
 			}
 			return minMax;
+		}
+		
+		//find all music categories
+		public ArrayList<BeanAttraction> findAllAttType() {
+			ArrayList<BeanAttraction> att = null;
+			try {
+				String queryString = "SELECT * FROM global_attractiontype";
+				connection = getConnection();
+				ptmt = connection.prepareStatement(queryString);
+				rs1 = ptmt.executeQuery();
+
+				att = new ArrayList<BeanAttraction>();
+				while (rs1.next()) {
+					BeanAttraction temp = new BeanAttraction();
+					temp.setAttTypeID(rs1.getInt("attTypeID"));
+					temp.setAttType(rs1.getString("attType"));
+					att.add(temp);
+
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs1 != null)
+						rs1.close();
+					if (ptmt != null)
+						ptmt.close();
+					if (connection != null)
+						connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+			return att;
+		}
+		
+		//round prices to a specified number of places
+		public double roundPrice(double value, int places) {
+		    if (places < 0) throw new IllegalArgumentException();
+
+		    BigDecimal bd = new BigDecimal(value);
+		    bd = bd.setScale(places, RoundingMode.HALF_UP);
+		    return bd.doubleValue();
 		}
 }

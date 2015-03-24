@@ -91,7 +91,7 @@ public class BeanAttraction implements Serializable{
 	public double getTktPrice() {
 		return ticketPrice;
 	}
-	public void setTktPrice(int tktPrice) {
+	public void setTktPrice(double tktPrice) {
 		this.ticketPrice = tktPrice;
 	}
 

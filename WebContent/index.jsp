@@ -11,19 +11,9 @@
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body>
-	<div id="wrapper">
-		<div id="headerwrap">
-			<div id="header">
-				<div id="logo">
-					<img
-						style="height: auto; width: auto; max-width: 100px; max-height: 75px;"
-						src="images/logo.png" id="Logo">
-				</div>
-				<h1>Global Tickets Ltd</h1>
-			</div>
-		</div>
+<div id="wrapper">
 		
-		<jsp:include page="navbar.html" />
+		<jsp:include page="header.html" />
 		
 		<div id="contentliquid">
 			<div id="contentwrap">
@@ -54,7 +44,7 @@
 		</div>
 		<div id="footerwrap">
 			<div id="footer">
-				<i><span>CongoCorp Entertainment Store, 123 Old Church St, Newton Heath, Manchester, M10 2DA</span></i>
+				<i><span>Global Tickets Ltd, 123 Old Church St, Newton Heath, Manchester, M10 2DA</span></i>
 				<div id="accessibility">
 					<a href='videos'
 						title='Plain-Text Video Listing || CongoCorp Online Store'>See
