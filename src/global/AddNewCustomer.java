@@ -36,17 +36,17 @@ public class AddNewCustomer extends HttpServlet {
 		DAOLogin lconnect = new DAOLogin();
 		int custID =0;
 		String userType = "customer";
-		String fName = request.getParameter("") ;
-		String oName =request.getParameter("") ;
-		String lName =request.getParameter("");
-		String cAddress =request.getParameter(""); 
-		String cPostcode =request.getParameter("");
-		String cCity =request.getParameter("");
-		String cCountry =request.getParameter("");
-		String cDOB =request.getParameter(""); 
-		String cEmail =request.getParameter("");
-		String cTel =request.getParameter("");
-		String cMob =request.getParameter("");
+		String fName = request.getParameter("custfname") ;
+		String oName =request.getParameter("custoname") ;
+		String lName =request.getParameter("custlname");
+		String cAddress =request.getParameter("custaddress"); 
+		String cPostcode =request.getParameter("custpostcode");
+		String cCity =request.getParameter("custcity");
+		String cCountry =request.getParameter("custcountry");
+		String cDOB =request.getParameter("custdob"); 
+		String cEmail =request.getParameter("custemail");
+		String cTel =request.getParameter("custtel");
+		String cMob =request.getParameter("custmob");
 		BeanCustomer c = new BeanCustomer( fName,  oName, lName,  cAddress, cPostcode, 
 				cCity, cCountry, cDOB,  cEmail,  cTel,  cMob);
 		cconnect.add(c);
@@ -55,8 +55,8 @@ public class AddNewCustomer extends HttpServlet {
 		custID = c.getCustID();
 			
 		String username, password;
-		username = request.getParameter("");
-		password = request.getParameter("");
+		username = request.getParameter("custusername");
+		password = request.getParameter("custpassword");
 		BeanLogin l = new BeanLogin(custID, username, password, userType);
 		lconnect.addUser(l); 
 	}

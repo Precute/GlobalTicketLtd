@@ -33,13 +33,12 @@
 							<td><input type="text" name="custfname" placeholder="First Name" maxlength="50" required></td></tr>
 							
 							<tr><td>Other Name:</td>
-							<td><input type="text" name="custOname" placeholder="Other Name" maxlength="50" required></td></tr>
 							
 							<tr><td>(*)Last Name:</td>
 							<td><input type="text" name="custlname" placeholder="Last Name" maxlength="50" required></td></tr>
 							
 							<tr><td>(*)Address Line 1:</td>
-							<td><input type="text" name="custaddress1" placeholder="Address " maxlength="400" required></td></tr>
+							<td><input type="text" name="custaddress" placeholder="Address " maxlength="400" required></td></tr>
 							
 							<tr><td>(*)Postcode:</td> 
 							<td><input type="text" name="custpostcode" placeholder="Postcode" maxlength="10" required></td></tr>
