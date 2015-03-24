@@ -2,8 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="global.*,java.util.*"%>
 	
-	<!-- 13153439 Huseyin Arpalikli
-This jsp displays the home page-->
+	<!--This jsp displays the home page-->
 <!DOCTYPE html>
 <html>
 <head>
