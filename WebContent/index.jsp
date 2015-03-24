@@ -18,7 +18,7 @@ This jsp displays the home page-->
 				<div id="logo">
 					<img
 						style="height: auto; width: auto; max-width: 100px; max-height: 75px;"
-						src="images/logo1.png" id="Logo">
+						src="images/logo.png" id="Logo">
 				</div>
 				<h1>Global Tickets Ltd</h1>
 			</div>
