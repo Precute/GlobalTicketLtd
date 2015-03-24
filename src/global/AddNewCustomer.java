@@ -31,8 +31,11 @@ public class AddNewCustomer extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		DAOCustomer cconnect = new DAOCustomer();
-		DAOLogin loconnect = new DAOLogin();
+		DAOLogin lconnect = new DAOLogin();
+		int custID =0;
+		String userType = "customer";
 		String fName = request.getParameter("") ;
 		String oName =request.getParameter("") ;
 		String lName =request.getParameter("");
@@ -48,6 +51,14 @@ public class AddNewCustomer extends HttpServlet {
 				cCity, cCountry, cDOB,  cEmail,  cTel,  cMob);
 		cconnect.add(c);
 		
+		 c = cconnect.findCustByEmailAndPostcode(cEmail, cPostcode);
+		custID = c.getCustID();
+			
+		String username, password;
+		username = request.getParameter("");
+		password = request.getParameter("");
+		BeanLogin l = new BeanLogin(custID, username, password, userType);
+		lconnect.addUser(l); 
 	}
 
 }
