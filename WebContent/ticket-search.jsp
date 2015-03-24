@@ -122,7 +122,7 @@ This jsp displays search and the results in a table -->
 										}
 										else
 											out.println("<td>Tickets Available</td>");	%>
-									    <td><form action="book-tickets" method="post">
+									    <td><form action="booking-page.jsp" method="post">
 									    		<input type="hidden" name="attractionname" value="<%=a.getAttName()%>">
 									    		<input type="hidden" name="attractionid" value="<%=a.getAttractionID()%>">
 									    		<input type="hidden" name="tickettypeid" value="<%=a.getTicketTypeID()%>">

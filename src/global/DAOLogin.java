@@ -24,7 +24,7 @@ public class DAOLogin {
 	//add user to the database
 	public void addUser(BeanLogin usr) {
 		try {
-			String queryString = "INSERT INTO user_reg(id, username, password, usertype) VALUES(?,?,?,?)";
+			String queryString = "INSERT INTO global_login(loginid, loginusername, loginpassword, loginusertype) VALUES(?,?,?,?)";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			ptmt.setInt(1, usr.getID());
@@ -54,7 +54,7 @@ public class DAOLogin {
 	public boolean validateLogin(String username,String password) {
 		boolean status = false;
 		try {
-			String queryString = "SELECT * FROM user_reg WHERE username=? AND password=?";
+			String queryString = "SELECT * FROM global_login WHERE loginusername=? AND loginpassword=?";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			ptmt.setString(1, username);
@@ -85,7 +85,7 @@ public class DAOLogin {
 	public BeanLogin retrieveUser (String username,String password) {
 		BeanLogin usr = null;
 		try {
-			String queryString = "SELECT * FROM user_reg WHERE username=? AND password=?";
+			String queryString = "SELECT * FROM global_login WHERE loginusername=? AND loginpassword=?";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			ptmt.setString(1, username);
@@ -96,9 +96,9 @@ public class DAOLogin {
 			if(rs.next()){
 				BeanLogin temp = new BeanLogin();
 				temp.setID(rs.getInt("id"));
-				temp.setUsername(rs.getString("username"));
-				temp.setPassword(rs.getString("password"));
-				temp.setUserType(rs.getString("usertype"));
+				temp.setUsername(rs.getString("loginusername"));
+				temp.setPassword(rs.getString("loginpassword"));
+				temp.setUserType(rs.getString("loginusertype"));
 				usr=temp;
 			}
 			
@@ -123,7 +123,7 @@ public class DAOLogin {
 	public BeanLogin retrieveUserByUsername (String username) {
 		BeanLogin usr = null;
 		try {
-			String queryString = "SELECT * FROM user_reg WHERE username=?";
+			String queryString = "SELECT * FROM global_login WHERE loginusername=?";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			ptmt.setString(1, username);
@@ -132,10 +132,10 @@ public class DAOLogin {
 			usr = new BeanLogin();
 			if(rs.next()){
 				BeanLogin temp = new BeanLogin();
-				temp.setID(rs.getInt("id"));
-				temp.setUsername(rs.getString("username"));
-				temp.setPassword(rs.getString("password"));
-				temp.setUserType(rs.getString("usertype"));
+				temp.setID(rs.getInt("loginid"));
+				temp.setUsername(rs.getString("loginusername"));
+				temp.setPassword(rs.getString("loginpassword"));
+				temp.setUserType(rs.getString("loginusertype"));
 				usr=temp;
 			}
 			
