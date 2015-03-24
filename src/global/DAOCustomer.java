@@ -298,4 +298,57 @@ public class DAOCustomer {
 		}
 		return c;
 	}
+	
+	/**
+	 * @param email
+	 * @param postcode
+	 * @return 
+	 * THIS METHOD retrieves the customer details 
+	 * with the customer's email and postcode
+	 */
+	public BeanCustomer findCustByEmailAndPostcode(String email, String postcode){
+		BeanCustomer c = null;
+		try {
+			String queryString = "SELECT * from globel_customeraccount WHERE custEmail ='"+email+"' AND custPCode='"+postcode+"'" ;
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			rs1 = ptmt.executeQuery();
+			c = new BeanCustomer ();
+			while(rs1.next()) {
+				BeanCustomer temp = new BeanCustomer();
+				temp.setCustID(rs1.getInt("customerID"));
+				temp.setFirstName(rs1.getString("custFirstname"));
+				temp.setOtherName(rs1.getString("custOthername"));
+				temp.setLastName(rs1.getString("custSurname"));
+				temp.setAddress(rs1.getString("custAddress"));
+				temp.setPostcode(rs1.getString("custPCode"));
+				temp.setCity(rs1.getString("custCity"));
+				temp.setCountry(rs1.getString("custCuntry"));
+				temp.setDOB(rs1.getString("custDOB"));
+				temp.setEmailAddress(rs1.getString("custEmail"));
+				temp.setTel(rs1.getString("custTel"));
+				temp.setMob(rs1.getString("custMob"));
+				c =temp;
+
+			}
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs1 != null)
+					rs1.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return c;
+	}
 }
