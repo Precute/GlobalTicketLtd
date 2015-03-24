@@ -89,7 +89,7 @@ public class BeanEmployee implements Serializable {
 		return startDate;
 	}
 
-	public void setAddress(String startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 	
