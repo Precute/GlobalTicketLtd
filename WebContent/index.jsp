@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="congo.*,java.util.*"%>
-	<%DAOMusic mconnect = new DAOMusic();
-	DAOVideo vconnect = new DAOVideo(); %>
+<%@ page import="global.*,java.util.*"%>
+	
 	<!-- 13153439 Huseyin Arpalikli
 This jsp displays the home page-->
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home || CongoCorp Entertainment Store</title>
+<title>Home || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body>
@@ -19,31 +18,14 @@ This jsp displays the home page-->
 				<div id="logo">
 					<img
 						style="height: auto; width: auto; max-width: 100px; max-height: 75px;"
-						src="images/logo1.png" id="congocorpLogo">
+						src="images/logo1.png" id="Logo">
 				</div>
-				<h1>CongoCorp Entertainment Store</h1>
+				<h1>Global Tickets Ltd</h1>
 			</div>
 		</div>
-		<div id="navigationwrap">
-			<div id="navigation">
-				<div id="tabs24">
-					<ul>
-						<li><a href='index.jsp' title='Home Page' class='current'><span>Home
-									Page</span></a></li>
-						<li><a href='videos.jsp' title='Video Listing'><span>Video
-									Listing</span></a></li>
-						<li><a href='actors-listing.jsp' title='Video Actors Listing'><span>Video Actors
-						Listing</span></a></li>										
-						<li><a href='music.jsp' title='Music Listing'><span>Music
-									Listing</span></a></li>
-						<li><a href='tracks-listing.jsp' title='Music Tracks Listing'><span>Tracks Listing</span></a></li>			
-						<li><a href='basket.jsp' title='Shopping Basket'><span>Shopping Basket</span></a></li>			
-						<li><a href='customer-account.jsp' title='Customer Area'><span>Customer Area</span></a></li>
-						<li><a href='admin-account.jsp' title='Staff Area'><span>Staff Area</span></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+		
+		<jsp:include page="navbar.html" />
+		
 		<div id="contentliquid">
 			<div id="contentwrap">
 				<div id="content">
@@ -66,9 +48,9 @@ This jsp displays the home page-->
 		</div>
 		<div id="leftcolumnwrap">
 			<div id="leftcolumn">
-			<jsp:include page="basket-view.jsp" />
+			bask
  				<hr>
-					<jsp:include page="loginform.jsp" />
+					login
 			</div>
 		</div>
 		<div id="footerwrap">
