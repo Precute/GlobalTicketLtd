@@ -39,7 +39,7 @@
 			<div id="leftcolumn">
 			bask
  				<hr>
-					login
+					<jsp:include page="loginform.jsp" />
 			</div>
 		</div>
 		<div id="footerwrap">

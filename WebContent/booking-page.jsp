@@ -49,7 +49,7 @@ This jsp displays search and the results in a table -->
 					<div id="leftcolumn">
 			bask
  				<hr>
-				log
+				<jsp:include page="loginform.jsp" />
 			</div>
 			</div>
 		<div id="footerwrap">
