@@ -62,7 +62,8 @@ public class DAOEmployee {
 
 	}
 	/**
-	 * @return
+	 * @return 
+	 * view all the employee 
 	 */
 	public ArrayList<BeanEmployee> viewAllEmp() {
 		ArrayList<BeanEmployee> s = null;
