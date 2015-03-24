@@ -33,6 +33,7 @@
 							<td><input type="text" name="custfname" placeholder="First Name" maxlength="50" required></td></tr>
 							
 							<tr><td>Other Name:</td>
+							<td><input type="text" name="custoname" placeholder="Other Name" maxlength="50" required></td></tr>
 							
 							<tr><td>(*)Last Name:</td>
 							<td><input type="text" name="custlname" placeholder="Last Name" maxlength="50" required></td></tr>
