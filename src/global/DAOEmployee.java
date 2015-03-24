@@ -39,11 +39,11 @@ public class DAOEmployee {
 			ptmt.setString(4, e.getDOB());
 			ptmt.setString(5, e.getStartDate());
 			ptmt.setString(6, e.getRole());
-			ptmt.setDouble(7, e.getSalary());
+			ptmt.setFloat(7, e.getSalary());
 			ptmt.setString(8, e.getEmailAddress());
 			ptmt.setString(9, e.getTel());
 			ptmt.executeUpdate();
-			//System.out.println("Data Added Successfully");
+			System.out.println("Data Added Successfully");
 		} catch (SQLException s) {
 			s.printStackTrace();
 		} finally {
@@ -82,7 +82,7 @@ public class DAOEmployee {
 				temp.setDOB(rs1.getString("empDOB"));
 				temp.setStartDate(rs1.getString("empStartDate"));
 				temp.setRole(rs1.getString("empRole"));
-				temp.setSalary(rs1.getDouble("empSalay"));
+				temp.setSalary(rs1.getFloat("empSalay"));
 				temp.setEmailAddress(rs1.getString("empEmail"));
 				temp.setTel(rs1.getString("empTel"));
 				temp.setManagerID(rs1.getInt("managerID"));
@@ -116,10 +116,10 @@ public class DAOEmployee {
 	 * @return all employee details 
 	 * this method finds customers by their ID
 	 */
-	public ArrayList<BeanEmployee> viewEmpByID(int ID) {
+	public ArrayList<BeanEmployee> findEmpByID(int ID) {
 		ArrayList<BeanEmployee> s = null;
 		try {
-			String queryString = "SELECT * from globel_employeeaccount where employeeID like '%"+ID+"%' " ;
+			String queryString = "SELECT * from globel_employeeaccount where employeeID = "+ID+ "" ;
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			rs1 = ptmt.executeQuery();
@@ -133,7 +133,7 @@ public class DAOEmployee {
 				temp.setDOB(rs1.getString("empDOB"));
 				temp.setStartDate(rs1.getString("empStartDate"));
 				temp.setRole(rs1.getString("empRole"));
-				temp.setSalary(rs1.getDouble("empSalay"));
+				temp.setSalary(rs1.getFloat("empSalay"));
 				temp.setEmailAddress(rs1.getString("empEmail"));
 				temp.setTel(rs1.getString("empTel"));
 				temp.setManagerID(rs1.getInt("managerID"));

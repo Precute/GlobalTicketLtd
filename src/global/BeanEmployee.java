@@ -12,7 +12,7 @@ public class BeanEmployee implements Serializable {
 	private String lastName;
 	private String DOB;
 	private String startDate;
-	private double salary;
+	private float salary;
 	private String email;
 	private String tel;
 	private String role;
@@ -22,7 +22,7 @@ public class BeanEmployee implements Serializable {
 
 	}
 
-	public BeanEmployee(int employeeID, String fName, String oName, String lName, String DOB, String startDate, double salary, String email, String tel, String role, int managerID) {
+	public BeanEmployee(int employeeID, String fName, String oName, String lName, String DOB, String startDate, float salary, String email, String tel, String role, int managerID) {
 		this.employeeID=employeeID;
 		firstName=fName;
 		otherName=oName;
@@ -36,7 +36,7 @@ public class BeanEmployee implements Serializable {
 		this.managerID=managerID;
 	}
 	
-	public BeanEmployee(String fName, String oName, String lName, String DOB, String startDate, double salary, String email, String tel, String role, int managerID) {
+	public BeanEmployee(String fName, String oName, String lName, String DOB, String startDate, float salary, String email, String tel, String role, int managerID) {
 		firstName=fName;
 		otherName=oName;
 		lastName=lName;
@@ -47,6 +47,17 @@ public class BeanEmployee implements Serializable {
 		this.tel=tel;
 		this.role=role;
 		this.managerID=managerID;
+	}
+	public BeanEmployee(String fName, String oName, String lName, String DOB, String startDate, float salary, String email, String tel, String role) {
+		firstName=fName;
+		otherName=oName;
+		lastName=lName;
+		this.DOB=DOB;
+		this.startDate=startDate;
+		this.salary=salary;
+		this.email=email;
+		this.tel=tel;
+		this.role=role;
 	}
 	/*
 	 * define all getters and setters here for each instance variable also a
@@ -101,11 +112,11 @@ public class BeanEmployee implements Serializable {
 		this.managerID = managerID;
 	}
 	
-	public double getSalary() {
+	public float getSalary() {
 		return salary;
 	}
 
-	public void setSalary(double salary) {
+	public void setSalary(float salary) {
 		this.salary = salary;
 	}
 	

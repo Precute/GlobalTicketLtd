@@ -29,6 +29,26 @@ public class AddNewEmployee extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOEmployee econnect = new DAOEmployee();
 		DAOLogin loconnect = new DAOLogin();
+		int empID =0;
+		String userType = "employee";
+		String fName = request.getParameter("empfname");
+		String oName = request.getParameter("emponame");
+		String lName = request.getParameter("emplname");
+		String DOB = request.getParameter("empdob");
+		String startDate = request.getParameter("startdate");
+		float salary = Float.parseFloat(request.getParameter("empsalary"));
+		String email  = request.getParameter("empemail");
+		String tel = request.getParameter("emptel");
+		String role = request.getParameter("emprole"); 
+			
+		BeanEmployee e = new BeanEmployee(fName, oName, lName, DOB, startDate, salary, email, tel, role);
+		econnect.add(e);
+		
+		String username, password;
+		username = request.getParameter("empusername");
+		password = request.getParameter("emppassword");
+		BeanLogin l = new BeanLogin(empID, username, password, userType);
+		loconnect.addUser(l);
 	}
 
 }

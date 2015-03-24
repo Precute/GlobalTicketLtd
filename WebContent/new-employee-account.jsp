@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Register || Global Tickets Ltd</title>
+<title>Sign Employee Up || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body>
@@ -28,48 +28,42 @@
 				response.addCookie(type); 
 				} %>
 					<table>
-					<form action="add-customer" onsubmit= "return  verify(this);"  method="post"> 
+					<form action="add-employee" onsubmit= "return  verify(this);"  method="post"> 
 							<tr><td>(*)First Name:</td> 
-							<td><input type="text" name="custfname" placeholder="First Name" maxlength="50" required></td></tr>
+							<td><input type="text" name="empfname" placeholder="First Name" maxlength="50" required></td></tr>
 							
 							<tr><td>Other Name:</td>
-							<td><input type="text" name="custoname" placeholder="Other Name" maxlength="50" ></td></tr>
+							<td><input type="text" name="emponame" placeholder="Other Name" maxlength="50" ></td></tr>
 							
 							<tr><td>(*)Last Name:</td>
-							<td><input type="text" name="custlname" placeholder="Last Name" maxlength="50" required></td></tr>
+							<td><input type="text" name="emplname" placeholder="Last Name" maxlength="50" required></td></tr>
 							
-							<tr><td>(*)Address Line 1:</td>
-							<td><input type="text" name="custaddress" placeholder="Address " maxlength="400" required></td></tr>
+							<tr><td>Date of Birth:</td> 
+							<td><input type="date" name="empdob" placeholder="dd/mm/yyyy" ></td></tr>
 							
-							<tr><td>(*)Postcode:</td> 
-							<td><input type="text" name="custpostcode" placeholder="Postcode" maxlength="10" required></td></tr>
+							<tr><td>State Date:</td> 
+							<td><input type="date" name="startdate" placeholder="dd/mm/yyyy" ></td></tr>
 							
-							<tr><td>(*)City:</td> 
-							<td><input type="text" name="custcity" placeholder="City" maxlength="100" required></td></tr>
-						
-							<tr><td>(*)Country:</td> 
-							<td><input type="text" name="custcountry" placeholder="Country" maxlength="100" required></td></tr>
+							<tr><td>Role:</td> 
+							<td><input type="text" name="emprole" placeholder="Role" maxlength="20" ></td></tr>
 							
-							<tr><td>(*)Date of Birth:</td> 
-							<td><input type="date" name="custdob" placeholder="dd/mm/yyyy" required></td></tr>
+							<tr><td>(*)Salary:</td> 
+							<td><input type="currency" name="empsalary" placeholder="Salary" maxlength="100" required></td></tr>
 							
 							<tr><td>(*)Email Address:</td> 
-							<td><input type="email" name="custemail" placeholder="Email Address" maxlength="200" required></td></tr>
+							<td><input type="email" name="empemail" placeholder="Email Address" maxlength="200" required></td></tr>
 							
 							<tr><td>Telephone:</td> 
-							<td><input type="telephone" name="custtel" placeholder="Telephone" maxlength="14" ></td></tr>
-							
-							<tr><td>Mobile:</td> 
-							<td><input type="telephone" name="custmob" placeholder="Mobile" maxlength="14" ></td></tr>
+							<td><input type="telephone" name="emptel" placeholder="Telephone" maxlength="14" ></td></tr>
 							
 							<tr><td>(*)Username:</td> 
-							<td><input type="text" name="custusername" placeholder="Username" maxlength="100" required></td></tr>
+							<td><input type="text" name="empusername" placeholder="Username" maxlength="100" required></td></tr>
 							
 							<tr><td>(*)Password:</td> 
-							<td><input type="password" id="custpassword" name="custpassword" placeholder="Password" maxlength="100" required></td></tr>
+							<td><input type="password" id="emppassword" name="custpassword" placeholder="Password" maxlength="100" required></td></tr>
 							
 							<tr><td>(*)Confirm Password:</td> 
-							<td><input type="password" id="custverpassword" name="custverpassword" placeholder="Verify Pasword" maxlength="100" required></td></tr>
+							<td><input type="password" id="empverpassword" name="custverpassword" placeholder="Verify Pasword" maxlength="100" required></td></tr>
 						
 							<tr><br><td><input type="submit" value="Register" ></td></tr>
 							</form>
