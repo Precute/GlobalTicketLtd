@@ -100,6 +100,38 @@ public class DAOAttraction {
 			}
 			return minMax;
 		}
+		public Float[] getTicketsMinMaxPriceByType(int attractionID) {
+			Float[] minMax= new Float[2];
+			try {
+				String queryString = "SELECT ROUND(MIN(ticketprice),2) AS MIN, ROUND(MAX(ticketprice),2) AS MAX FROM global_attractionpricelist WHERE attractionid="+attractionID+" ";
+				connection = getConnection();
+				ptmt = connection.prepareStatement(queryString);
+				rs1 = ptmt.executeQuery();
+
+				
+				if(rs1.next()){
+					minMax[0]=(rs1.getFloat("MIN"));
+					minMax[1]=(rs1.getFloat("MAX"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs1 != null)
+						rs1.close();
+					if (ptmt != null)
+						ptmt.close();
+					if (connection != null)
+						connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+			return minMax;
+		}
 		
 		//find all music categories
 		public ArrayList<BeanAttraction> findAllAttType() {
