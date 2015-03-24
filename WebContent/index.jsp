@@ -28,7 +28,7 @@
 				response.addCookie(type); 
 				} %>
 					Welcome to our new website!<br> <br> Feel free to browse
-					for information about The Global Ticket, as well as purchase music and
+					for information about The Global Tickets Ltd, as well as purchase music and
 					videos. This is just the start of our presence online and we are
 					expecting to our online presence to expand over the coming months.<br>
 					

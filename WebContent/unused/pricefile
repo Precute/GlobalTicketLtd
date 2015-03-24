@@ -1,0 +1,36 @@
+
+						<%
+							Float[] pri = aconnect.getAttTicketsMinMaxPrice();
+											float min = (float)aconnect.roundPrice(pri[0]-1, 2);
+											float max = pri[1];
+						%>
+						<select name="minprice">
+							<option value="<%=min-1%>">Min Price</option>
+							<%
+								float i = 0;
+													for (i = min; i <= max; i += 2) {
+							%>
+							<option value="<%=i%>"><%=i%></option>
+							<%
+								}
+							%>
+						</select> 
+						<select name="maxprice">
+							<option value="<%=max%>">Max Price</option>
+							<%
+								float j = 0;
+							for (j = max; j >= min; j -= 2) {
+							%>
+							<option value="<%=j%>"><%=j%></option>
+							<%
+								}
+							%>
+						</select> 
+						
+						
+						
+						
+						Float minPrice = Float.parseFloat(request
+															.getParameter("minprice"));
+												Float maxPrice = Float.parseFloat(request
+															.getParameter("maxprice"));

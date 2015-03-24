@@ -7,6 +7,7 @@ public class BeanAttraction implements Serializable{
 	private int attractionID;
 	private String attName;
 	private String attDescript;
+	private String attFullDescript;
 	private int attAvailabilityCount;
 	
 	private int locationID;
@@ -41,11 +42,12 @@ public class BeanAttraction implements Serializable{
 		tktType = typeNme;
 	}
 
-	public BeanAttraction(int atID, String aName, String aDscript, int aAvalCt, int aTypeID, int locID) {
+	public BeanAttraction(int atID, String aName, String aDscript, String aFullDescript, int aAvalCt, int aTypeID, int locID) {
 		// for catalogue
 		attractionID = atID;
 		attName  = aName;
 		attDescript = aDscript;
+		attFullDescript=aFullDescript;
 		attAvailabilityCount = aAvalCt;
 		attTypeID = aTypeID;
 		locationID = locID;
@@ -77,6 +79,13 @@ public class BeanAttraction implements Serializable{
 	}
 	public void setAttDescript(String attDescript){
 		this.attDescript = attDescript;
+	}
+	
+	public String getAttFullDescript (){
+		return attFullDescript;
+	}
+	public void setAttFullDescript(String attFDescript){
+		this.attFullDescript = attFDescript;
 	}
 	
 	public int getAttAvailabilityCount(){

@@ -27,6 +27,8 @@ This jsp displays search and the results in a table -->
 					<form action="ticket-search.jsp" method="get">
 						<%
 							ArrayList<BeanAttraction> type = aconnect.findAllAttType();
+						ArrayList<BeanAttraction> city = aconnect.findAllCity();
+						ArrayList<BeanAttraction> country = aconnect.findAllCountry();
 						%>
 						<select name="atttype">
 							<option value="">Attraction Type</option>
@@ -39,34 +41,31 @@ This jsp displays search and the results in a table -->
 								}
 							%>
 						</select>
-
-						<%
-							Float[] pri = aconnect.getAttTicketsMinMaxPrice();
-											float min = (float)aconnect.roundPrice(pri[0]-1, 2);
-											float max = pri[1];
-						%>
-						<select name="minprice">
-							<option value="<%=min-1%>">Min Price</option>
+						
+						<select name="city">
+							<option value="">City</option>
 							<%
-								float i = 0;
-													for (i = min; i <= max; i += 2) {
+								for (BeanAttraction a : city) {
 							%>
-							<option value="<%=i%>"><%=i%></option>
+							<option value="<%=a.getCity()%>">
+								<%=a.getCity()%></option>
 							<%
 								}
 							%>
-						</select> <select name="maxprice">
-							<option value="<%=max%>">Max Price</option>
+						</select>
+						
+						<select name="country">
+							<option value="">Country</option>
 							<%
-								float j = 0;
-							for (j = max; j >= min; j -= 2) {
+								for (BeanAttraction a : country) {
 							%>
-							<option value="<%=j%>"><%=j%></option>
+							<option value="<%=a.getCountry()%>">
+								<%=a.getCountry()%></option>
 							<%
 								}
 							%>
-						</select> <input type="text" name="city" placeholder="City">
-						</select> <input type="text" name="country" placeholder="Country">
+						</select>
+						
 						<br> <input type="submit" value="Search" name="search">
 					</form>
 
@@ -82,7 +81,6 @@ This jsp displays search and the results in a table -->
 							<th>Type of Attraction</th>
 							<th>City</th>
 							<th>Country</th>
-							<th>Ticket Type</th>
 							<th>Price</th>
 							<th>Availability</th>
 							<th>Book?</th>
@@ -90,31 +88,32 @@ This jsp displays search and the results in a table -->
 						
 							<%
 								String attType = request.getParameter("atttype");
-												String city = request.getParameter("city");
-												String country = request.getParameter("country");
-												Float minPrice = Float.parseFloat(request
-															.getParameter("minprice"));
-												Float maxPrice = Float.parseFloat(request
-															.getParameter("maxprice"));
+												String locCity = request.getParameter("city");
+												String locCountry = request.getParameter("country");
+												
 												ArrayList<BeanAttraction> att = aconnect.
-														findAtrByAttTypePriceCountry(attType, minPrice, maxPrice, city, country);
+														findByAttTypeCityCountry(attType, locCity, locCountry);
 												
 													for (BeanAttraction a : att) {
 														%>
-														<tr><td><%=a.getAttName()%></td>
-														
-							
-						
-							<td><form id="descriptionform" action="attraction-details.jsp" method="get"> 
+							<tr><td><form id="detailsform" action="attraction-details.jsp" method="get"> 
 							<input type='hidden' name="attractionid" value="<%=a.getAttractionID()%>">
-							  <input type="submit" class="submitLink" value="<%=a.getAttDescript()%>" >
+							<input type='hidden' name="attractionname" value="<%=a.getAttName()%>">
+							<input type='hidden' name="attractiontype" value="<%=a.getAttType()%>">
+							<input type='hidden' name="attractionfulldescript" value="<%=a.getAttFullDescript()%>">
+							<input type='hidden' name="city" value="<%=a.getCity()%>">
+							<input type='hidden' name="country" value="<%=a.getCountry()%>">
+							 <input type="submit" class="submitLink" value="<%=a.getAttName()%>" >
 							</form></td>
 							
+							<td><%=a.getAttDescript()%></td>
 							<td><%=a.getAttType()%></td>
 							<td><%=a.getCity()%></td>
 							<td><%=a.getCountry()%></td>
-							<td><%=a.getTicketType()%></td>
-							<td><%=a.getTktPrice()%></td>
+							<%Float[] prices = aconnect.getTicketsMinMaxPriceByType(a.getAttractionID());
+							 float minPr = (float)aconnect.roundPrice(prices[0], 2);
+											float maxPr = prices[1]; %>
+							<td>£<%=minPr%> to £<%=maxPr%></td>
 							
 										<%if (a.getAttAvailabilityCount() == 0) {
 											out.println("<td>No Tickets Available</td>");
