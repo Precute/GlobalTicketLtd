@@ -33,7 +33,7 @@
 							<td><input type="text" name="custfname" placeholder="First Name" maxlength="50" required></td></tr>
 							
 							<tr><td>Other Name:</td>
-							<td><input type="text" name="custoname" placeholder="Other Name" maxlength="50" required></td></tr>
+							<td><input type="text" name="custoname" placeholder="Other Name" maxlength="50" ></td></tr>
 							
 							<tr><td>(*)Last Name:</td>
 							<td><input type="text" name="custlname" placeholder="Last Name" maxlength="50" required></td></tr>
@@ -57,10 +57,10 @@
 							<td><input type="email" name="custemail" placeholder="Email Address" maxlength="200" required></td></tr>
 							
 							<tr><td>Telephone:</td> 
-							<td><input type="telephone" name="custtel" placeholder="Telephone" maxlength="14" required></td></tr>
+							<td><input type="telephone" name="custtel" placeholder="Telephone" maxlength="14" ></td></tr>
 							
 							<tr><td>Mobile:</td> 
-							<td><input type="telephone" name="custmob" placeholder="Mobile" maxlength="14" required></td></tr>
+							<td><input type="telephone" name="custmob" placeholder="Mobile" maxlength="14" ></td></tr>
 							
 							<tr><td>(*)Username:</td> 
 							<td><input type="text" name="custusername" placeholder="Username" maxlength="100" required></td></tr>
