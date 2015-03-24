@@ -309,7 +309,7 @@ public class DAOCustomer {
 	public BeanCustomer findCustByEmailAndPostcode(String email, String postcode){
 		BeanCustomer c = null;
 		try {
-			String queryString = "SELECT * from globel_customeraccount WHERE custEmail ='"+email+"' AND custPCode='"+postcode+"'" ;
+			String queryString = "SELECT * from global_customeraccount WHERE custEmail ='"+email+"' AND custPCode='"+postcode+"'" ;
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			rs1 = ptmt.executeQuery();
@@ -323,7 +323,7 @@ public class DAOCustomer {
 				temp.setAddress(rs1.getString("custAddress"));
 				temp.setPostcode(rs1.getString("custPCode"));
 				temp.setCity(rs1.getString("custCity"));
-				temp.setCountry(rs1.getString("custCuntry"));
+				temp.setCountry(rs1.getString("custCountry"));
 				temp.setDOB(rs1.getString("custDOB"));
 				temp.setEmailAddress(rs1.getString("custEmail"));
 				temp.setTel(rs1.getString("custTel"));

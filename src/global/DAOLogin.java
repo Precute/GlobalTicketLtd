@@ -95,7 +95,7 @@ public class DAOLogin {
 			usr = new BeanLogin();
 			if(rs.next()){
 				BeanLogin temp = new BeanLogin();
-				temp.setID(rs.getInt("id"));
+				temp.setID(rs.getInt("loginid"));
 				temp.setUsername(rs.getString("loginusername"));
 				temp.setPassword(rs.getString("loginpassword"));
 				temp.setUserType(rs.getString("loginusertype"));
