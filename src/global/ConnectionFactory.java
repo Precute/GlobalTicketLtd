@@ -6,19 +6,19 @@ import java.sql.SQLException;
 /** Class that makes connection to the database
  */
 public class ConnectionFactory {
-	 /*//declare database information
+	 //declare database information for mudfoot
 	String driverClassName = "com.mysql.jdbc.Driver";
 	String dBase = "arpalikh"; // Name of database
 	String dbUser = "arpalikh"; //
 	String dbPwd = "queonitH8";
-	String connectionUrl = "jdbc:mysql://mudfoot.doc.stu.mmu.ac.uk/" + dBase; */
+	String connectionUrl = "jdbc:mysql://mudfoot.doc.stu.mmu.ac.uk/" + dBase; 
 	
-	//declare database information
+	/** //declare database information for local host
 	String driverClassName = "com.mysql.jdbc.Driver";
 	String dBase = "arpalikh"; // Name of database
 	String dbUser = "root"; //
 	String dbPwd = "password";
-	String connectionUrl = "jdbc:mysql://localhost:3306/" + dBase;
+	String connectionUrl = "jdbc:mysql://localhost:3306/" + dBase; */
 	
 	private static ConnectionFactory connectionFactory = null;
 	//declare constructor
