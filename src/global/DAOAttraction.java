@@ -78,6 +78,57 @@ public class DAOAttraction {
 
 	}
 	
+	public ArrayList<BeanAttraction> findAttByID(int ID) {
+		ArrayList<BeanAttraction> att = null;
+		try {
+			String queryString = "SELECT *" //, tktType, ticketPrice "
+					+ "FROM global_attractioncatalogue c, global_attractiontype att, global_location l " //,global_tickettype tt ,global_attractionpricelist p "
+					+ "WHERE l.locationID=c.locationID "
+					+ "AND att.attTypeID=c.attTypeID "
+					+ "AND attractionID="+ID+"";
+					
+			
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			rs1 = ptmt.executeQuery();
+
+			att = new ArrayList<BeanAttraction>();
+			while (rs1.next()) {
+				BeanAttraction temp = new BeanAttraction();
+				temp.setAttractionID(rs1.getInt("attractionID"));
+				temp.setAttName(rs1.getString("attName"));
+				temp.setAttDescript(rs1.getString("attDescript"));
+				temp.setAttFullDescript(rs1.getString("attFullDescription"));
+				temp.setAttAvailabilityCount(rs1.getInt("attAvailabilityCount"));
+				temp.setAttType(rs1.getString("attType"));
+				temp.setCity(rs1.getString("city"));
+				temp.setCountry(rs1.getString("country"));
+				//temp.setTicketType(rs1.getString("tktType"));
+				//temp.setTktPrice(rs1.getFloat("ticketPrice"));
+				att.add(temp);
+
+			}
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs1 != null)
+					rs1.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return att;
+
+	}
 	
 	public ArrayList<BeanAttraction> findPricesByAttID(int attID) {
 		ArrayList<BeanAttraction> att = null;
