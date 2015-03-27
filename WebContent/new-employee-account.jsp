@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="global.*,java.util.*"%>
 	
-	<!--This jsp is for customers to create account-->
+	<!--This jsp is for employee to create account-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -60,34 +60,34 @@
 							<td><input type="text" name="empusername" placeholder="Username" maxlength="100" required></td></tr>
 							
 							<tr><td>(*)Password:</td> 
-							<td><input type="password" id="emppassword" name="custpassword" placeholder="Password" maxlength="100" required></td></tr>
+							<td><input type="password" id="emppassword" name="emppassword" placeholder="Password" maxlength="100" required></td></tr>
 							
 							<tr><td>(*)Confirm Password:</td> 
-							<td><input type="password" id="empverpassword" name="custverpassword" placeholder="Verify Pasword" maxlength="100" required></td></tr>
+							<td><input type="password" id="empverpassword" name="empverpassword" placeholder="Verify Pasword" maxlength="100" required></td></tr>
 						
 							<tr><br><td><input type="submit" value="Register" ></td></tr>
 							</form>
 							</table>
 					<script>
 function verify(form) {
-  if (form.custfname.value.replace(/\s+/g,'') == '' 
-		  || form.custlname.value.replace(/\s+/g,'') == '' 
-		  || form.custaddress1.value.replace(/\s+/g,'') == ''
-		  || form.custcity.value.replace(/\s+/g,'') == ''
-		  || form.custpostcode.value.replace(/\s+/g,'') == ''
-		|| form.custusername.value.replace(/\s+/g,'') == ''
-		 || form.custpassword.value.replace(/\s+/g,'') == ''
-			 || form.custverpassword.value.replace(/\s+/g,'') == ''
+  if (form.empfname.value.replace(/\s+/g,'') == '' 
+		  || form.emplname.value.replace(/\s+/g,'') == '' 
+		  //form.empaddress.value.replace(/\s+/g,'') == ''
+		  //|| form.empcity.value.replace(/\s+/g,'') == ''
+		  || form.emppostcode.value.replace(/\s+/g,'') == ''
+		|| form.empusername.value.replace(/\s+/g,'') == ''
+		 || form.emppassword.value.replace(/\s+/g,'') == ''
+			 || form.empverpassword.value.replace(/\s+/g,'') == ''
 		  ) {
     alert('Please ensure all mandatory fields(*) are filled.');
     return false;
   }
-  var pass1 = document.getElementById("custpassword").value;
-  var pass2 = document.getElementById("custverpassword").value;
+  var pass1 = document.getElementById("emppassword").value;
+  var pass2 = document.getElementById("empverpassword").value;
   if (pass1 != pass2) {
       alert("Passwords do not match! Please verify and try again.");
-      document.getElementById("custpassword").style.borderColor = "#E34234";
-      document.getElementById("custverpassword").style.borderColor = "#E34234";
+      document.getElementById("emppassword").style.borderColor = "#E34234";
+      document.getElementById("empverpassword").style.borderColor = "#E34234";
       return false;
   }
 }

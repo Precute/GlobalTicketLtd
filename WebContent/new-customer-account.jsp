@@ -78,7 +78,7 @@
 function verify(form) {
   if (form.custfname.value.replace(/\s+/g,'') == '' 
 		  || form.custlname.value.replace(/\s+/g,'') == '' 
-		  || form.custaddress1.value.replace(/\s+/g,'') == ''
+		  || form.custaddress.value.replace(/\s+/g,'') == ''
 		  || form.custcity.value.replace(/\s+/g,'') == ''
 		  || form.custpostcode.value.replace(/\s+/g,'') == ''
 		|| form.custusername.value.replace(/\s+/g,'') == ''

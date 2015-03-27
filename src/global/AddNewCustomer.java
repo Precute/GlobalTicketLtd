@@ -35,7 +35,7 @@ public class AddNewCustomer extends HttpServlet {
 		
 		DAOCustomer cconnect = new DAOCustomer();
 		DAOLogin lconnect = new DAOLogin();
-		int custID =0;
+		int custID;
 		String userType = "customer";
 		String fName = request.getParameter("custfname") ;
 		String oName =request.getParameter("custoname") ;

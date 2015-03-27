@@ -37,13 +37,14 @@ public class AddNewEmployee extends HttpServlet {
 		String DOB = request.getParameter("empdob");
 		String startDate = request.getParameter("startdate");
 		float salary = Float.parseFloat(request.getParameter("empsalary"));
-		String email  = request.getParameter("empemail");
+		String eEmail  = request.getParameter("empemail");
 		String tel = request.getParameter("emptel");
 		String role = request.getParameter("emprole"); 
 			
-		BeanEmployee e = new BeanEmployee(fName, oName, lName, DOB, startDate, salary, email, tel, role);
-		econnect.add(e);
-		
+		BeanEmployee emp = new BeanEmployee(fName, oName, lName, DOB, startDate, salary, eEmail, tel, role);
+		econnect.add(emp);
+		 emp = econnect.findEmpByEmailAndLastname(eEmail, lName);
+			empID = emp.getEmpID();
 		String username, password;
 		username = request.getParameter("empusername");
 		password = request.getParameter("emppassword");
