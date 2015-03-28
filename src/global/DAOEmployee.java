@@ -29,8 +29,8 @@ public class DAOEmployee {
 	public void add(BeanEmployee e) {
 		try {
 			String queryString = "INSERT INTO global_employeeaccount(empFirstname, empOthername, empSurname, "
-					+ "empDOB, empStartDate, empRole, empSalary,  custEmail, custTel) "
-					+ "VALUES(?,?,?,?,?,?,?,?,?)";
+					+ "empDOB, empStartDate, empRole, empSalary,  empEmail, empTel, managerID) "
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			ptmt.setString(1, e.getFirstName());
@@ -42,6 +42,7 @@ public class DAOEmployee {
 			ptmt.setFloat(7, e.getSalary());
 			ptmt.setString(8, e.getEmailAddress());
 			ptmt.setString(9, e.getTel());
+			ptmt.setInt(10, e.getManagerID());
 			ptmt.executeUpdate();
 			System.out.println("Data Added Successfully");
 		} catch (SQLException s) {

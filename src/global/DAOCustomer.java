@@ -39,7 +39,7 @@ public class DAOCustomer {
 			ptmt.setString(10, c.getTel());
 			ptmt.setString(11, c.getMob());
 			ptmt.executeUpdate();
-			//System.out.println("Data Added Successfully");
+			System.out.println("Data Added Successfully");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
