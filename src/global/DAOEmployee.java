@@ -29,8 +29,8 @@ public class DAOEmployee {
 	public void add(BeanEmployee e) {
 		try {
 			String queryString = "INSERT INTO global_employeeaccount(empFirstname, empOthername, empSurname, "
-					+ "empDOB, empStartDate, empRole, empSalary,  empEmail, empTel, managerID) "
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+					+ "empDOB, empStartDate, empRole, empSalary,  empEmail, empTel) "
+					+ "VALUES(?,?,?,?,?,?,?,?,?)";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			ptmt.setString(1, e.getFirstName());
@@ -42,9 +42,8 @@ public class DAOEmployee {
 			ptmt.setFloat(7, e.getSalary());
 			ptmt.setString(8, e.getEmailAddress());
 			ptmt.setString(9, e.getTel());
-			ptmt.setInt(10, e.getManagerID());
 			ptmt.executeUpdate();
-			System.out.println("Data Added Successfully");
+			//System.out.println("Data Added Successfully");
 		} catch (SQLException s) {
 			s.printStackTrace();
 		} finally {
@@ -175,18 +174,16 @@ public class DAOEmployee {
 				temp.setEmployeeID(rs1.getInt("employeeID"));
 				temp.setFirstName(rs1.getString("empFirstname"));
 				temp.setOtherName(rs1.getString("empOthername"));
-				temp.setLastName(rs1.getString("emptSurname"));
+				temp.setLastName(rs1.getString("empSurname"));
 				temp.setDOB(rs1.getString("empDOB"));
 				temp.setStartDate(rs1.getString("empStartDate"));
 				temp.setRole(rs1.getString("empRole"));
-				temp.setSalary(rs1.getFloat("empSalay"));
+				temp.setSalary(rs1.getFloat("empSalary"));
 				temp.setEmailAddress(rs1.getString("empEmail"));
 				temp.setTel(rs1.getString("empTel"));
-				temp.setManagerID(rs1.getInt("managerID"));
 				c =temp;
-
 			}
-	
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

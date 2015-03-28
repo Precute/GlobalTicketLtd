@@ -329,7 +329,6 @@ public class DAOCustomer {
 				temp.setTel(rs1.getString("custTel"));
 				temp.setMob(rs1.getString("custMob"));
 				c =temp;
-
 			}
 	
 		} catch (SQLException e) {

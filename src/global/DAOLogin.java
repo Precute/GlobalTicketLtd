@@ -32,7 +32,7 @@ public class DAOLogin {
 			ptmt.setString(3, usr.getPassword());
 			ptmt.setString(4, usr.getUserType());
 			ptmt.executeUpdate();
-			System.out.println("Login Data Added Successfully");
+			//System.out.println("Login Data Added Successfully");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

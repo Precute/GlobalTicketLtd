@@ -58,6 +58,7 @@ public class AddNewCustomer extends HttpServlet {
 		String username, password;
 		username = request.getParameter("custusername");
 		password = request.getParameter("custpassword");
+		
 		BeanLogin l = new BeanLogin(custID, username, password, userType);
 		lconnect.addUser(l); 
 	}

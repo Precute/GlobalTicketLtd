@@ -29,7 +29,7 @@ public class AddNewEmployee extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOEmployee econnect = new DAOEmployee();
 		DAOLogin loconnect = new DAOLogin();
-		int empID;
+		int employeeID;
 		String userType = "employee";
 		String fName = request.getParameter("empfname");
 		String oName = request.getParameter("emponame");
@@ -41,14 +41,14 @@ public class AddNewEmployee extends HttpServlet {
 		String tel = request.getParameter("emptel");
 		String role = request.getParameter("emprole"); 
 			
-		BeanEmployee emp = new BeanEmployee(fName, oName, lName, DOB, startDate, salary, eEmail, tel, role);
-		econnect.add(emp);
-		 emp = econnect.findEmpByEmailAndLastname(eEmail, lName);
-			empID = emp.getEmpID();
+		BeanEmployee c = new BeanEmployee(fName, oName, lName, DOB, startDate, salary, eEmail, tel, role);
+		econnect.add(c);
+		c = econnect.findEmpByEmailAndLastname(eEmail, lName);
+			employeeID = c.getEmpID();
 		String username, password;
 		username = request.getParameter("empusername");
 		password = request.getParameter("emppassword");
-		BeanLogin l = new BeanLogin(empID, username, password, userType);
+		BeanLogin l = new BeanLogin(employeeID, username, password, userType);
 		loconnect.addUser(l);
 	}
 
