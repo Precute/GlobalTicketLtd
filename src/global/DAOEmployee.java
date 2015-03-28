@@ -64,6 +64,7 @@ public class DAOEmployee {
 	/**
 	 * @return 
 	 * view all the employee 
+	 * 
 	 */
 	public ArrayList<BeanEmployee> viewAllEmp() {
 		ArrayList<BeanEmployee> s = null;
@@ -108,6 +109,47 @@ public class DAOEmployee {
 
 		}
 		return s;
+
+	}
+	
+	
+	public ArrayList<BeanEmployee> viewAllEmpDetail() {
+		ArrayList<BeanEmployee> emp = null;
+		try {
+			String queryString = "SELECT employeeID, empFirstname, empSurname, empRole FROM global_employeeaccount" ;
+			//String queryString = "SELECT employeeID, CONCAT(empFirstname,  '   ',empSurname) AS Name, empRole FROM global_employeeaccount" ;
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			rs1 = ptmt.executeQuery();
+			emp = new ArrayList<BeanEmployee>();
+			while(rs1.next()) {
+				BeanEmployee temp = new BeanEmployee();
+				temp.setEmployeeID(rs1.getInt("employeeID"));
+				temp.setFirstName(rs1.getString("empFirstname"));
+				temp.setLastName(rs1.getString("emptSurname"));
+				temp.setRole(rs1.getString("empRole"));
+				emp.add(temp);
+
+			}
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs1 != null)
+					rs1.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return emp;
 
 	}
 

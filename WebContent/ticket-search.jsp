@@ -144,7 +144,7 @@ This jsp displays search and the results in a table -->
 		</div>
 		<div id="leftcolumnwrap">
 					<div id="leftcolumn">
-			bask
+			basket
  				<hr>
 				<jsp:include page="loginform.jsp" />
 			</div>
