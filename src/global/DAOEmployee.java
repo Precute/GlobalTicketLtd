@@ -79,7 +79,7 @@ public class DAOEmployee {
 				temp.setEmployeeID(rs1.getInt("employeeID"));
 				temp.setFirstName(rs1.getString("empFirstname"));
 				temp.setOtherName(rs1.getString("empOthername"));
-				temp.setLastName(rs1.getString("emptSurname"));
+				temp.setLastName(rs1.getString("empSurname"));
 				temp.setDOB(rs1.getString("empDOB"));
 				temp.setStartDate(rs1.getString("empStartDate"));
 				temp.setRole(rs1.getString("empRole"));
@@ -126,7 +126,7 @@ public class DAOEmployee {
 				BeanEmployee temp = new BeanEmployee();
 				temp.setEmployeeID(rs1.getInt("employeeID"));
 				temp.setFirstName(rs1.getString("empFirstname"));
-				temp.setLastName(rs1.getString("emptSurname"));
+				temp.setLastName(rs1.getString("empSurname"));
 				temp.setRole(rs1.getString("empRole"));
 				emp.add(temp);
 
@@ -171,7 +171,7 @@ public class DAOEmployee {
 				temp.setEmployeeID(rs1.getInt("employeeID"));
 				temp.setFirstName(rs1.getString("empFirstname"));
 				temp.setOtherName(rs1.getString("empOthername"));
-				temp.setLastName(rs1.getString("emptSurname"));
+				temp.setLastName(rs1.getString("empSurname"));
 				temp.setDOB(rs1.getString("empDOB"));
 				temp.setStartDate(rs1.getString("empStartDate"));
 				temp.setRole(rs1.getString("empRole"));

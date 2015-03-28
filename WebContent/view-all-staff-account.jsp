@@ -56,11 +56,12 @@
 						</tr>
 						
 					<% ArrayList<BeanEmployee> emp = econnect.viewAllEmpDetail();
-					for(BeanEmployee e : emp){
-					}%>
-					<tr><td><%=emp.getEmpID()%></td>
-					<td><%=emp.getFirstName()%> <%= %></td>
-					<td></td></tr>
+					for(BeanEmployee e: emp){%>
+						<tr><td><%=e.getEmpID()%></td>
+						<td><%=e.getFirstName()%> <%=e.getLastName()%></td>
+						<td><%=e.getRole()%></td></tr>
+					<%} %>
+					
 					</table>
 					<%}%>
 				</div>
