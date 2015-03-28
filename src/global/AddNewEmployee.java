@@ -29,7 +29,7 @@ public class AddNewEmployee extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DAOEmployee econnect = new DAOEmployee();
 		DAOLogin loconnect = new DAOLogin();
-		int empID =0;
+		int empID;
 		String userType = "employee";
 		String fName = request.getParameter("empfname");
 		String oName = request.getParameter("emponame");
