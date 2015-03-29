@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Employee || Global Tickets Ltd</title>
+<title>Home || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body>
@@ -18,7 +18,6 @@
 		<div id="contentliquid">
 			<div id="contentwrap">
 				<div id="content">
-				
 				<%session = request.getSession(true);
 				Cookie ck[]=request.getCookies();  
 				Cookie user, type;
@@ -27,18 +26,17 @@
 				type=new Cookie("usertype", "");
 				response.addCookie(user); 
 				response.addCookie(type); 
-				} 
+				}
+  				DAOCustomer cconnect = new DAOCustomer();%>
 				
-			DAOEmployee econnect = new DAOEmployee();%>
-				
-				<i>Use this search function helps to find an employee <br>(If
+				<i>Use this search function finds all Customer <br>(If
 						search isn't required, pressing 'View' to displays all Employee)
 					</i> <br> <br>
 				
-				<form action="view-all-staff-account.jsp" method="get">
+				<form action="view-all-customer.jsp" method="get">
 				<%
 				
-				ArrayList<BeanEmployee> allEmp = econnect.viewAllEmpDetail();
+				ArrayList<BeanCustomer> allCust = cconnect.viewAllCustDetail();
 						%>
 				
 				
@@ -50,16 +48,16 @@
 					<h2>Here are the details of all Staffs:</h2>
 					<table border="1">
 						<tr>
-							<th>Employee ID</th>
+							<th>Customer ID</th>
 							<th>Name</th>
-							<th>Role</th>
+							<th>Country</th>
 						</tr>
 						
-					<% ArrayList<BeanEmployee> emp = econnect.viewAllEmpDetail();
-					for(BeanEmployee e: emp){%>
-						<tr><td><%=e.getEmpID()%></td>
-						<td><%=e.getFirstName()%> <%=e.getLastName()%></td>
-						<td><%=e.getRole()%></td></tr>
+					<% ArrayList<BeanCustomer> cust = cconnect.viewAllCustDetail();
+					for(BeanCustomer c : cust){%>
+						<tr><td><%=c.getCustID()%></td>
+						<td><%=c.getFirstName()%> <%=c.getLastName()%></td>
+						<td><%=c.getCountry()%></td></tr>
 					<%} %>
 					
 					</table>

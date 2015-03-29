@@ -142,6 +142,44 @@ public class DAOCustomer {
 
 	}
 	
+	public ArrayList<BeanCustomer> viewAllCustDetail() {
+		ArrayList<BeanCustomer> c = null;
+		try {
+			String queryString = "select customerID, custFirstname, custSurname, custCountry from global_customeraccount" ;
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			rs1 = ptmt.executeQuery();
+			c = new ArrayList<BeanCustomer>();
+			while(rs1.next()) {
+				BeanCustomer temp = new BeanCustomer();
+				temp.setCustID(rs1.getInt("customerID"));
+				temp.setFirstName(rs1.getString("custFirstname"));
+				temp.setLastName(rs1.getString("custSurname"));
+				temp.setCountry(rs1.getString("custCountry"));
+				c.add(temp);
+
+			}
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs1 != null)
+					rs1.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return c;
+
+	}
 	
 	/**
 	 * @param ID id the customer ID
