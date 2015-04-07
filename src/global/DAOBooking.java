@@ -88,7 +88,7 @@ public class DAOBooking {
 	public BeanBookingDetails findOrderByDateAndCustID(String date, int custID) {
 		BeanBookingDetails det = null;
 		try {
-			String queryString = "SELECT * FROM order_details WHERE customer_id = "+custID+" AND date(order_date)= '"+date+"' ";
+			String queryString = "SELECT * FROM global_bookingdetails WHERE customerid = "+custID+" AND date(bookingdate)= '"+date+"' ";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			rs1 = ptmt.executeQuery();
@@ -96,10 +96,10 @@ public class DAOBooking {
 			det = new BeanBookingDetails();
 			if(rs1.next()) {
 				BeanBookingDetails temp = new BeanBookingDetails();
-				temp.setOrderID(rs1.getInt("order_id"));
-				temp.setOrderDate(rs1.getString("order_date"));
-				temp.setOrderTotal(rs1.getFloat("order_total"));
-				temp.setCustID(rs1.getInt("customer_id"));
+				temp.setBookingID(rs1.getInt("bookingid"));
+				temp.setDate(rs1.getString("bookingdate"));
+				temp.setTotalCost(rs1.getFloat("bookingtotalcost"));
+				temp.setCustID(rs1.getInt("customerid"));
 
 				det=temp;
 
@@ -130,7 +130,7 @@ public class DAOBooking {
 	public ArrayList<BeanBookingDetails> findOrderByCustID(int custID) {
 		ArrayList<BeanBookingDetails> det = null;
 		try {
-			String queryString = "SELECT order_id, DATE_FORMAT(date(order_date),'%d/%m/%Y') AS date, order_total, customer_id FROM order_details WHERE customer_id = "+custID+" ";
+			String queryString = "SELECT bookingid, DATE_FORMAT(date(bookingdate),'%d/%m/%Y') AS date, bookingtotalcost, customerid FROM global_bookingdetails WHERE customerid = "+custID+" ";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			rs1 = ptmt.executeQuery();
@@ -138,10 +138,10 @@ public class DAOBooking {
 			det = new ArrayList<BeanBookingDetails>();
 			while(rs1.next()) {
 				BeanBookingDetails temp = new BeanBookingDetails();
-				temp.setOrderID(rs1.getInt("order_id"));
-				temp.setOrderDate(rs1.getString("date"));
-				temp.setOrderTotal(rs1.getFloat("order_total"));
-				temp.setCustID(rs1.getInt("customer_id"));
+				temp.setBookingID(rs1.getInt("bookingid"));
+				temp.setDate(rs1.getString("date"));
+				temp.setTotalCost(rs1.getFloat("bookingtotalcost"));
+				temp.setCustID(rs1.getInt("customerid"));
 
 				det.add(temp);
 
@@ -171,7 +171,7 @@ public class DAOBooking {
 	public ArrayList<BeanBookingDetails> findAllOrder() {
 		ArrayList<BeanBookingDetails> det = null;
 		try {
-			String queryString = "SELECT order_id, DATE_FORMAT(date(order_date),'%d/%m/%Y') AS date, order_total, customer_id FROM order_details";
+			String queryString = "SELECT bookingid, DATE_FORMAT(date(bookingdate),'%d/%m/%Y') AS date, bookingtotalcost, customerid FROM global_bookingdetails";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			rs1 = ptmt.executeQuery();
@@ -179,10 +179,10 @@ public class DAOBooking {
 			det = new ArrayList<BeanBookingDetails>();
 			while(rs1.next()) {
 				BeanBookingDetails temp = new BeanBookingDetails();
-				temp.setOrderID(rs1.getInt("order_id"));
-				temp.setOrderDate(rs1.getString("date"));
-				temp.setOrderTotal(rs1.getFloat("order_total"));
-				temp.setCustID(rs1.getInt("customer_id"));
+				temp.setBookingID(rs1.getInt("bookingid"));
+				temp.setDate(rs1.getString("date"));
+				temp.setTotalCost(rs1.getFloat("bookingtotalcost"));
+				temp.setCustID(rs1.getInt("customerid"));
 
 				det.add(temp);
 
