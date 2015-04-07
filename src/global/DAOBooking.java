@@ -28,10 +28,10 @@ public class DAOBooking {
 	//add order details to database
 	public void addDetails(BeanBookingDetails det) {
 		try {
-			String queryString = "INSERT INTO order_details(order_total, customer_id) VALUES(?,?)";
+			String queryString = "INSERT INTO global_bookingdetails(bookingdate, customer_id) VALUES(?,?)";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
-			ptmt.setFloat(1, det.getOrderTotal());
+			ptmt.setString(1, det.getDate());
 			ptmt.setInt(2, det.getCustID());
 			ptmt.executeUpdate();
 			System.out.println("Data Added Successfully");
@@ -55,11 +55,15 @@ public class DAOBooking {
 	//add order line to database
 	public void addLine(BeanTicketOnBooking line) {
 		try {
-			String queryString = "INSERT INTO order_line(order_id, recording_id) VALUES(?,?)";
+			String queryString = "INSERT INTO global_ticketonbooking(bookingid, attractionid, tkttypeid, ticketdate, ticketqty, tkttotalcost) VALUES(?,?,?,?,?,?)";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
-			ptmt.setInt(1, line.getOrderID());
-			ptmt.setInt(2, line.getRecordingID());
+			ptmt.setInt(1, line.getBookingID());
+			ptmt.setInt(2, line.getAttractionID());
+			ptmt.setInt(3, line.getTktTypeID());
+			ptmt.setString(4, line.getTicketDate());
+			ptmt.setInt(5, line.getTicketQty());
+			ptmt.setFloat(6, line.getTktTotalCost());
 			ptmt.executeUpdate();
 			System.out.println("Data Added Successfully");
 		} catch (SQLException e) {

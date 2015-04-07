@@ -9,20 +9,20 @@ public class BeanBookingDetails implements Serializable {
 
 	private int bookingID;
 	private String date;
-	private double totalCost;
+	private float totalCost;
 	private int customerID;
 	//declare constructors
 	public BeanBookingDetails() {
 
 	}
 
-	public BeanBookingDetails(int bID, String date, double totalCost, int custID) {
+	public BeanBookingDetails(int bID, String date, float totalCost, int custID) {
 		bookingID=bID;
 		this.date=date;
 		this.totalCost=totalCost;
 		customerID=custID;
 	}
-	public BeanBookingDetails(String date, double totalCost, int custID) {
+	public BeanBookingDetails(String date, float totalCost, int custID) {
 		this.date=date;
 		this.totalCost=totalCost;
 		customerID=custID;
@@ -47,11 +47,11 @@ public class BeanBookingDetails implements Serializable {
 		this.date = date;
 	}
 	
-	public double getTotalCost() {
+	public float getTotalCost() {
 		return totalCost;
 	}
 
-	public void setTotalCost(int tCost) {
+	public void setTotalCost(float tCost) {
 		this.totalCost = tCost;
 	}
 

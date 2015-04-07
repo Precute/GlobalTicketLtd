@@ -9,14 +9,14 @@ private int attractionID;
 private int tktTypeID;
 private String ticketDate;
 private int ticketQty;
-private Double tktTotalCost;
+private float tktTotalCost;
 
 	public BeanTicketOnBooking() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public BeanTicketOnBooking( int bID, int aID, int tID, String tDate,
-	int tQty, Double tCost) {
+	int tQty, float tCost) {
 		// TODO Auto-generated constructor stub
 		bookingID = bID;
 		attractionID = aID;
@@ -55,10 +55,10 @@ private Double tktTotalCost;
 	public void setTicketQty( int ticketQty){
 		this.ticketQty = ticketQty;
 	}
-	public Double getTktTotalCost(){
+	public float getTktTotalCost(){
 		return tktTotalCost;
 	}
-	public void setTktTotalCost(Double tktTotalCost){
+	public void setTktTotalCost(float tktTotalCost){
 		this.tktTotalCost = tktTotalCost;
 	}
 
