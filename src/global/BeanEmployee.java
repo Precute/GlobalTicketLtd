@@ -17,6 +17,9 @@ public class BeanEmployee implements Serializable {
 	private String tel;
 	private String role;
 	private int managerID;
+	private String manManagerID;
+	private String manFirstName;
+	private String manLastName;
 	//declare constructors
 	public BeanEmployee() {
 
@@ -152,6 +155,22 @@ public class BeanEmployee implements Serializable {
 		this.role = role;
 	}
 
+	public String getManFirstName() {
+		return manFirstName;
+	}
+
+	public void setManFirstName(String fName) {
+		this.manFirstName = fName;
+	}
+
+
+	public String getManLastName() {
+		return manLastName;
+	}
+
+	public void setManLastName(String lName) {
+		this.manLastName = lName;
+	}
 	@Override
 	public String toString() {
 		return "BeanEmployee [employeeID=" + employeeID + ", firstName="

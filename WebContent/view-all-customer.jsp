@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home || Global Tickets Ltd</title>
+<title>Customers || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body>
@@ -30,7 +30,7 @@
   				DAOCustomer cconnect = new DAOCustomer();%>
 				
 				<i>Use this search function finds all Customer <br>(If
-						search isn't required, pressing 'View' to displays all Employee)
+						search isn't required, pressing 'View' to displays all Customers)
 					</i> <br> <br>
 				
 				<form action="view-all-customer.jsp" method="get">
@@ -45,7 +45,7 @@
 				<%
 					if (request.getParameter("view") != null) {
 				%>
-					<h2>Here are the details of all Staffs:</h2>
+					<h2>Here are the details of all customers:</h2>
 					<table border="1">
 						<tr>
 							<th>Customer ID</th>

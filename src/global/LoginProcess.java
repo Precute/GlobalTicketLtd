@@ -60,7 +60,7 @@ public class LoginProcess extends HttpServlet {
 		             Cookie type=new Cookie("usertype", usrType);
 		             type.setMaxAge(-1); //till end of session
 		             response.addCookie(type); 
-		    		response.sendRedirect("employee-account.jsp");  	 
+		    		response.sendRedirect("admin-account.jsp");  	 
 		    	}else if(usrType.equals("employee")){
 		    		//create cookies and send redirect to employee area
 		    		Cookie ck=new Cookie("username",user);  

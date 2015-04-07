@@ -116,7 +116,7 @@ public class DAOEmployee {
 	public ArrayList<BeanEmployee> viewAllEmpDetail() {
 		ArrayList<BeanEmployee> emp = null;
 		try {
-			String queryString = "SELECT employeeID, empFirstname, empSurname, empRole FROM global_employeeaccount" ;
+			String queryString = "SELECT e.employeeID, e.empFirstname, e.empSurname, e.empRole, e.managerID, m.empFirstname, m.empSurname FROM global_employeeaccount e INNER JOIN global_employeeaccount m ON e.managerID=m.employeeID" ;
 			//String queryString = "SELECT employeeID, CONCAT(empFirstname,  '   ',empSurname) AS Name, empRole FROM global_employeeaccount" ;
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
@@ -124,10 +124,13 @@ public class DAOEmployee {
 			emp = new ArrayList<BeanEmployee>();
 			while(rs1.next()) {
 				BeanEmployee temp = new BeanEmployee();
-				temp.setEmployeeID(rs1.getInt("employeeID"));
-				temp.setFirstName(rs1.getString("empFirstname"));
-				temp.setLastName(rs1.getString("empSurname"));
-				temp.setRole(rs1.getString("empRole"));
+				temp.setEmployeeID(rs1.getInt("e.employeeID"));
+				temp.setFirstName(rs1.getString("e.empFirstname"));
+				temp.setLastName(rs1.getString("e.empSurname"));
+				temp.setRole(rs1.getString("e.empRole"));
+				temp.setManagerID(rs1.getInt("e.managerID"));
+				temp.setManFirstName(rs1.getString("m.empFirstname"));
+				temp.setManLastName(rs1.getString("m.empSurname"));
 				emp.add(temp);
 
 			}

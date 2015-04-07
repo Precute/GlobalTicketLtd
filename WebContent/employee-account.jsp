@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Employees || Global Tickets Ltd</title>
+<title>Employee Account || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body>
@@ -39,51 +39,17 @@
 					 request.getRequestDispatcher("login.jsp").forward(request, response);  
 					 return;
 					 }
-				 if (!type.equals("admin") && type!=null){
-					 request.setAttribute("errorMessage", "Sorry customers and non-admin staff cannot login to admin area!"); 
+				 if (!type.equals("employee") && !type.equals("admin") && type!=null){
+					 request.setAttribute("errorMessage", "Sorry customers cannot login to employee area!"); 
 					 request.getRequestDispatcher("login.jsp").forward(request, response);  
 					 return;
 				 }
 				
 			DAOEmployee econnect = new DAOEmployee();%>
-				<a href ='new-employee-account.jsp'>Register new employee</a>
-				<br>
-				<br>
-				<i>Use this search function helps to find an employee <br>(If
-						search isn't required, pressing 'View' to displays all Employee)
-					</i> <br> <br>
+				<h3>Welcome to the employee area, here booking details and customer records can be found.</h3>
 				
-				<form action="view-all-staff-account.jsp" method="get">
-				<%
-				
-				ArrayList<BeanEmployee> allEmp = econnect.viewAllEmpDetail();
-						%>
-				
-				
-				 <input type="submit" value="View" name="view">
-				</form>
-				<%
-					if (request.getParameter("view") != null) {
-				%>
-					<h2>Here are the details of all Staffs:</h2>
-					<table border="1">
-						<tr>
-							<th>Employee ID</th>
-							<th>Name</th>
-							<th>Role</th>
-							<th>Manager Name</th>
-						</tr>
-						
-					<% ArrayList<BeanEmployee> emp = econnect.viewAllEmpDetail();
-					for(BeanEmployee e: emp){%>
-						<tr><td><%=e.getEmpID()%></td>
-						<td><%=e.getFirstName()%> <%=e.getLastName()%></td>
-						<td><%=e.getRole()%></td>
-						<td><%=e.getManFirstName()%> <%=e.getManLastName()%></td></tr>
-					<%} %>
-					
-					</table>
-					<%}%>
+				<a href='view-all-customer.jsp'>Customer Management Area</a>
+			
 				</div>
 			</div>
 		</div>

@@ -18,15 +18,32 @@
 		<div id="contentliquid">
 			<div id="contentwrap">
 				<div id="content">
-				<%session = request.getSession(true);
-				Cookie ck[]=request.getCookies();  
-				Cookie user, type;
-				if(ck==null || ck.length==1){
-				user=new Cookie("username", "");
-				type=new Cookie("usertype", "");
-				response.addCookie(user); 
-				response.addCookie(type); 
-				} %>
+				<%Cookie ck[]=request.getCookies();  
+				String username=null;
+				String type=null;
+				 if (ck != null) {
+				for (Cookie cookie : ck) {
+					   if(cookie.getName().equals("username")){
+						  username=cookie.getValue();
+					   }
+					   if(cookie.getName().equals("usertype")){
+						   type=cookie.getValue();
+						 
+					   }
+				   } 
+				}
+				  
+				 if (username == null || username.equals("")){
+					 request.setAttribute("errorMessage", "Please login first!"); 
+					 request.getRequestDispatcher("login.jsp").forward(request, response);  
+					 return;
+					 }
+				 if (!type.equals("admin") && type!=null){
+					 request.setAttribute("errorMessage", "Sorry customers and non-admin staff cannot login to admin area!"); 
+					 request.getRequestDispatcher("login.jsp").forward(request, response);  
+					 return;
+				 }%>
+				 
 					<table>
 					<form action="add-employee" onsubmit= "return  verify(this);"  method="post"> 
 							<tr><td>(*)First Name:</td> 

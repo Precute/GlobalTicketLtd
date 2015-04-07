@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Employees || Global Tickets Ltd</title>
+<title>Admin Account || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body>
@@ -46,44 +46,10 @@
 				 }
 				
 			DAOEmployee econnect = new DAOEmployee();%>
-				<a href ='new-employee-account.jsp'>Register new employee</a>
-				<br>
-				<br>
-				<i>Use this search function helps to find an employee <br>(If
-						search isn't required, pressing 'View' to displays all Employee)
-					</i> <br> <br>
+				<h3>Welcome to the admin area, here sales details, booking details, staff and customer records can be found.</h3>
 				
-				<form action="view-all-staff-account.jsp" method="get">
-				<%
-				
-				ArrayList<BeanEmployee> allEmp = econnect.viewAllEmpDetail();
-						%>
-				
-				
-				 <input type="submit" value="View" name="view">
-				</form>
-				<%
-					if (request.getParameter("view") != null) {
-				%>
-					<h2>Here are the details of all Staffs:</h2>
-					<table border="1">
-						<tr>
-							<th>Employee ID</th>
-							<th>Name</th>
-							<th>Role</th>
-							<th>Manager Name</th>
-						</tr>
-						
-					<% ArrayList<BeanEmployee> emp = econnect.viewAllEmpDetail();
-					for(BeanEmployee e: emp){%>
-						<tr><td><%=e.getEmpID()%></td>
-						<td><%=e.getFirstName()%> <%=e.getLastName()%></td>
-						<td><%=e.getRole()%></td>
-						<td><%=e.getManFirstName()%> <%=e.getManLastName()%></td></tr>
-					<%} %>
-					
-					</table>
-					<%}%>
+				<a href='view-all-staff-account.jsp'>Employee Management Area</a>
+				<br><a href='view-all-customer.jsp'>Customer Management Area</a>
 				</div>
 			</div>
 		</div>
