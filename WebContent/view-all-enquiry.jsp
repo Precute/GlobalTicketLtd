@@ -26,12 +26,40 @@
 				type=new Cookie("usertype", "");
 				response.addCookie(user); 
 				response.addCookie(type); 
-				} %>
-					Welcome to our new website!<br> <br> Feel free to browse
-					for information about The Global Tickets Ltd, as well as purchase all tickets for events to 
-					exciting places around the world. This is just the start of our presence online and we are
-					expecting to our online presence to expand over the coming months.<br>
+				}
+			DAOEnquiry econnect = new DAOEnquiry();%>
+				
+				<i>View all Enquiry from Customers <br>(Ensure the Customer reply as soon as possible)
+					</i> <br> <br>
+				
+				<form action="view-all-enquiry.jsp" method="get">
+				<%
+				
+				ArrayList<BeanEnquiry> eqy = econnect.viewAllEnquiry();
+						%>
+				<input type="submit" value="View Customer Enquiry" name="view">
+				</form>
+				<%
+					if (request.getParameter("view") != null) {
+				%>
+					<h2>Here are all enquiry requested by our customers:</h2>
+					<table border="1">
+						<tr>
+							<th>Enquiry ID</th>
+							<th>Description</th>
+							<th>Date</th>
+							<th>Customer ID </th>
+						</tr>
+						
+				<% ArrayList<BeanEnquiry> enq = econnect.viewAllEnquiry();
+					for(BeanEnquiry e : enq){%>
+						<tr><td><%e.getEnquiryID();%></td>
+						<td><% e.getEnqDescpt();%></td>
+						<td><%=e.getCustID()%></td></tr>
+					<%} %>
 					
+					</table>
+					<%}%>
 				</div>
 			</div>
 		</div>

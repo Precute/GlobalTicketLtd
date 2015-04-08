@@ -27,10 +27,9 @@
 				response.addCookie(user); 
 				response.addCookie(type); 
 				} %>
-					Welcome to our new website!<br> <br> Feel free to browse
-					for information about The Global Tickets Ltd, as well as purchase all tickets for events to 
-					exciting places around the world. This is just the start of our presence online and we are
-					expecting to our online presence to expand over the coming months.<br>
+					
+					
+					
 					
 				</div>
 			</div>
