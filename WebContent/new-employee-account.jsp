@@ -43,7 +43,7 @@
 					 request.getRequestDispatcher("login.jsp").forward(request, response);  
 					 return;
 				 }%>
-				 
+				 <input type="button" value="Back" onclick="window.history.back()" /> 
 					<table>
 					<form action="add-employee" onsubmit= "return  verify(this);"  method="post"> 
 							<tr><td>(*)First Name:</td> 

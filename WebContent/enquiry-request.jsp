@@ -10,7 +10,7 @@
 <title>Home || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
-<body>
+<body onload="myFunction()">
 <div id="wrapper">
 		
 		<jsp:include page="header.html" />
@@ -28,8 +28,40 @@
 				response.addCookie(type); 
 				} %>
 					
-					
-					
+					<table>
+					<form action="send-enquiry" onsubmit= "return  verify(this);"  method="post"> 
+							<tr><td>(*)Customer ID :</td> 
+							<td><input type="text" name="custid" placeholder="Customer ID" maxlength="10" required></td></tr>
+							
+							<tr><td>(*)Date: </td>
+							<td><input type="date" id="writeDay" name ="enqdate"/></td></tr>
+	
+							
+							<script>
+							function myFunction() {
+							document.getElementById('writeDay').valueAsDate = new Date();
+							}
+							</script>
+							
+							<tr><td>(*)Enquiry Details :</td>
+							<td><textarea name="enquirydetail" placeholder="What Do You Want To Say ?" rows="10" cols="60" maxlength="500" ></textarea></td></tr>
+							
+							
+							<tr><br><td><input type="submit" value="Send" ></td></tr>
+							</form>
+							</table>
+						
+					<script>
+function verify(form) {
+  if (form.custfname.value.replace(/\s+/g,'') == '' 
+		  || form.custid.value.replace(/\s+/g,'') == ''  
+		  || form.enquirydetail.value.replace(/\s+/g,'') == ''
+		  ) {
+    alert('Please ensure all mandatory fields(*) are filled.');
+    return false;
+  }
+}
+					</script>
 					
 				</div>
 			</div>

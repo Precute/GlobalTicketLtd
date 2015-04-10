@@ -28,6 +28,7 @@
 				response.addCookie(type); 
 				}
   				DAOCustomer cconnect = new DAOCustomer();%>
+  				<input type="button" value="Back" onclick="window.history.back()" /> <br>
 				
 				<i>Use this search function finds all Customer <br>(If
 						search isn't required, pressing 'View' to displays all Customers)

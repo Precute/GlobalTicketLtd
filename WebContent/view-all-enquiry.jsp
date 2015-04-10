@@ -27,7 +27,9 @@
 				response.addCookie(user); 
 				response.addCookie(type); 
 				}
-			DAOEnquiry econnect = new DAOEnquiry();%>
+			DAOEnquiry econnect = new DAOEnquiry();
+			DAOCustomer cconnect = new DAOCustomer();%>
+			<input type="button" value="Back" onclick="window.history.back()" /> <br>
 				
 				<i>View all Enquiry from Customers <br>(Ensure the Customer reply as soon as possible)
 					</i> <br> <br>
@@ -46,18 +48,27 @@
 					<table border="1">
 						<tr>
 							<th>Enquiry ID</th>
-							<th>Description</th>
 							<th>Date</th>
+							<th>Description</th>
 							<th>Customer ID </th>
+							<th>Customer Name </th>
+							<th>Reply Enquiry</th>
 						</tr>
 						
 				<% ArrayList<BeanEnquiry> enq = econnect.viewAllEnquiry();
-					for(BeanEnquiry e : enq){%>
-						<tr><td><%e.getEnquiryID();%></td>
-						<td><% e.getEnqDescpt();%></td>
-						<td><%=e.getCustID()%></td></tr>
+					for(BeanEnquiry e : enq){
+					 int id = e.getCustID();%>
+						<tr><td><%=e.getEnquiryID()%></td>
+						<td><%=e.getEnqDate() %></td>
+						<td><%=e.getEnqDescpt()%></td>
+						<td><%=id%></td>
+						 <% ArrayList<BeanCustomer> cust = cconnect.viewCustByID(id);
+					for(BeanCustomer c : cust){%>
+						
+						<td><%=c.getFirstName()%> <%=c.getLastName()%></td>
+					<%}  %>
+					<td>  </td></tr>
 					<%} %>
-					
 					</table>
 					<%}%>
 				</div>

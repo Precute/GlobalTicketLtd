@@ -50,6 +50,8 @@
 				
 				<a href='view-all-staff-account.jsp'>Employee Management Area</a>
 				<br><a href='view-all-customer.jsp'>Customer Management Area</a>
+				<br>
+				<a href='view-all-enquiry.jsp'>View all Customers Enquiry</a>
 				</div>
 			</div>
 		</div>

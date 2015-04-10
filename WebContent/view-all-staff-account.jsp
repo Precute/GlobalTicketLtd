@@ -46,12 +46,16 @@
 				 }
 				
 			DAOEmployee econnect = new DAOEmployee();%>
+			
+			<input type="button" value="Back" onclick="window.history.back()" /> <br>
 				<a href ='new-employee-account.jsp'>Register new employee</a>
 				<br>
 				<br>
 				<i>Use this search function helps to find an employee <br>(If
 						search isn't required, pressing 'View' to displays all Employee)
 					</i> <br> <br>
+					
+				
 				
 				<form action="view-all-staff-account.jsp" method="get">
 				<%

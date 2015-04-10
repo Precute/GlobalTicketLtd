@@ -60,5 +60,58 @@ public class DAOEnquiry {
 	return e;
 }
 	
+	public void add(BeanEnquiry enq) {
+		try {
+			String queryString = "INSERT INTO global_customerenquiry( eqyDescription, eqyDate, customerID  ) " + "VALUES(?,?,?)";
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			ptmt.setString(1, enq.getEnqDescpt());
+			ptmt.setString(2, enq.getEnqDate());
+			ptmt.setInt(3, enq.getCustID());
+			ptmt.executeUpdate();
+			System.out.println("Data Added Successfully");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+	}
 	
+	public void updateEnquiry(int ID, String note, int custID) {
+		try {
+			String queryString = "UPDATE global_customerenquiry SET eqyNote=?, employeeID =? WHERE enquiryID=?";
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			ptmt.setInt(1, ID);
+			ptmt.setString(2, note);
+			ptmt.setInt(3, custID);
+			ptmt.executeUpdate();
+			System.out.println("Enquiry Updated");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
 }

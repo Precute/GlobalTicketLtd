@@ -48,7 +48,8 @@
 			DAOEmployee econnect = new DAOEmployee();%>
 				<h3>Welcome to the employee area, here booking details and customer records can be found.</h3>
 				
-				<a href='view-all-customer.jsp'>Customer Management Area</a>
+				<a href='view-all-customer.jsp'>Customer Management Area</a><br>
+				<a href='view-all-enquiry.jsp'>View all Customers Enquiry</a>
 			
 				</div>
 			</div>
