@@ -164,7 +164,7 @@ public class DAOEmployee {
 	public ArrayList<BeanEmployee> findEmpByID(int ID) {
 		ArrayList<BeanEmployee> s = null;
 		try {
-			String queryString = "SELECT * from globel_employeeaccount where employeeID = "+ID+ "" ;
+			String queryString = "SELECT * from global_employeeaccount where employeeID = "+ID+ " " ;
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			rs1 = ptmt.executeQuery();
@@ -178,12 +178,11 @@ public class DAOEmployee {
 				temp.setDOB(rs1.getString("empDOB"));
 				temp.setStartDate(rs1.getString("empStartDate"));
 				temp.setRole(rs1.getString("empRole"));
-				temp.setSalary(rs1.getFloat("empSalay"));
+				temp.setSalary(rs1.getFloat("empSalary"));
 				temp.setEmailAddress(rs1.getString("empEmail"));
 				temp.setTel(rs1.getString("empTel"));
 				temp.setManagerID(rs1.getInt("managerID"));
 				s.add(temp);
-
 			}
 	
 		} catch (SQLException e) {
@@ -251,7 +250,7 @@ public class DAOEmployee {
 	public ArrayList<BeanEmployee> findEmpByUsername(String firstname) {
 		ArrayList<BeanEmployee> s = null;
 		try {
-			String queryString = "SELECT * from globel_employeeaccount where empFirstname like "+firstname+ "" ;
+			String queryString = "SELECT * from global_employeeaccount where empFirstname like "+firstname+ "" ;
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
 			rs1 = ptmt.executeQuery();
@@ -293,4 +292,6 @@ public class DAOEmployee {
 		return s;
 
 	}
+	
+	
 }

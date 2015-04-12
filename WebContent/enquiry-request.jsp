@@ -38,7 +38,7 @@
 					 return;
 					 }
 				 if (!type.equals("customer") && type!=null){
-					 request.setAttribute("errorMessage", "Sorry admin staff cannot login to customer area!"); 
+					 request.setAttribute("errorMessage", "Sorry admin staff and employee cannot login to customer area!"); 
 					 request.getRequestDispatcher("login.jsp").forward(request, response);  
 					 return;
 				 }

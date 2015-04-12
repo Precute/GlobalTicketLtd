@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Customer Account || Global Tickets Ltd</title>
+<title>Home || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body>
@@ -18,8 +18,7 @@
 		<div id="contentliquid">
 			<div id="contentwrap">
 				<div id="content">
-				
-				<%Cookie ck[]=request.getCookies();  
+					<%Cookie ck[]=request.getCookies();  
 				String username=null;
 				String type=null;
 				 if (ck != null) {
@@ -33,23 +32,15 @@
 					   }
 				   } 
 				}
-				  
-				 if (username == null || username.equals("")){
-					 request.setAttribute("errorMessage", "Please login first!"); 
-					 request.getRequestDispatcher("login.jsp").forward(request, response);  
-					 return;
-					 }
-				 if (!type.equals("customer") && type!=null){
-					 request.setAttribute("errorMessage", "Sorry employees cannot login to customer area!"); 
-					 request.getRequestDispatcher("login.jsp").forward(request, response);  
-					 return;
-				 }%>
-				<h3>Welcome to the customer area. You can view your bookings and customer profile here.</h3>
-				
-				<a href='tbc'>Customer Profile</a><br>
-				<a href='tbc'>View Bookings</a><br>
-				<br> <br><button type="button" onclick="location.href = 'view-response.jsp';">View enquiry Response</button>	
-			
+				DAOLogin lconnect = new DAOLogin();
+					DAOCustomer cconnect = new DAOCustomer();
+					 BeanLogin usr =null;
+					 String enqd = null;
+					 usr=lconnect.retrieveUserByUsername(username);
+					 int custID = usr.getID();%>
+					
+					
+					
 				</div>
 			</div>
 		</div>

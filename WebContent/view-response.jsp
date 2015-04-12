@@ -18,19 +18,77 @@
 		<div id="contentliquid">
 			<div id="contentwrap">
 				<div id="content">
-				<%session = request.getSession(true);
-				Cookie ck[]=request.getCookies();  
-				Cookie user, type;
-				if(ck==null || ck.length==1){
-				user=new Cookie("username", "");
-				type=new Cookie("usertype", "");
-				response.addCookie(user); 
-				response.addCookie(type); 
-				} %>
-					
-					
-					
-					
+				<%   Cookie ck[]=request.getCookies();  
+				String username=null;
+				String type=null;
+				 if (ck != null) {
+				for (Cookie cookie : ck) {
+					   if(cookie.getName().equals("username")){
+						  username=cookie.getValue();
+					   }
+					   if(cookie.getName().equals("usertype")){
+						   type=cookie.getValue();
+					   }
+				   } 
+				}
+				 
+				 DAOEnquiry econnect = new DAOEnquiry();
+					DAOLogin lconnect = new DAOLogin();
+					DAOEmployee empconnect = new DAOEmployee();
+					 BeanLogin usr =null;
+					 String enqd = null;
+					 usr=lconnect.retrieveUserByUsername(username);
+					 int custID = usr.getID();
+					 ArrayList<BeanEnquiry> ENQUIRY =null;
+					 ENQUIRY=econnect.findEnqByCustID(custID);
+					for(BeanEnquiry enq :ENQUIRY){
+						 enqd = enq.getEnqDescpt();
+						}
+					 
+					%>
+					 <input type="button" value="Back" onclick="window.history.back()" /> <br>
+					 
+		         	<% if (enqd == null || enqd.equals("")){
+					 out.println("<h3> Dear customer,<br> Global ticket limited do not have any record of your enquiry. <br> You can contact us by calling the office<br> or by clicking the button below : <br></h3>");
+	%> 
+				<br><button type="button" onclick="location.href = 'enquiry-request.jsp';">Make Enquiry</button>
+			 <br><button type="button" onclick="location.href = 'customer-account.jsp';">Go to Your Acount</button>					
+		         	
+		         	<%}if (enqd != null ){ %>
+		         		<h3> Here is a list of your Enquiry and Reply, <%=username %>!</h3>
+		             	<table border="1">
+		             	<tr>
+		             	<th>Enquiry ID</th>
+		             	<th>Your enquiry</th>
+		             	<th>Response</th>
+		             	<th>Staff's</th>
+		             	</tr>
+		    					<%for(BeanEnquiry oDeto: ENQUIRY){%>
+		             		<tr><td><%=oDeto.getEnquiryID()%></td>
+		    				<td><%=oDeto.getEnqDescpt()%></td>
+		    				<% if (oDeto.getEnqNote() == null) {
+		    										out.println("<td>We will get back to you as soon as possible.<br>The Global Ticket Limited<br> </td>");
+		    									} else
+		    										out.println("<td>" + oDeto.getEnqNote() + "</td>");%>
+		    				<%  int ID = oDeto.getEmpID();
+		    					 ArrayList<BeanEmployee> employee = null;
+		    						employee =empconnect.findEmpByID(ID);
+		    						for(BeanEmployee empy : employee){%>
+		    						<% String empname = empy.getFirstName(); %> 
+		    						<% String empname2 =empy.getLastName(); %>
+		    						
+		    						<% out.println("<td>"+ empname + " "+ empname2 +"</td>");%>
+		    				<%} %>
+		    					</tr>
+		    				
+		    			 <%}%>
+		             	</table>
+		    					
+		    				<br> <br><button type="button" onclick="location.href = 'customer-account.jsp';">Go to Your Acount</button>	
+		    				<br> <br><button type="button" onclick="location.href = 'enquiry-request.jsp';">Make a New Enquiry</button>
+		         	
+					 	<%} %>
+         
 				</div>
 			</div>
 		</div>
