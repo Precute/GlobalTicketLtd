@@ -248,5 +248,49 @@ public class DAOEmployee {
 		}
 		return c;
 	}
+	public ArrayList<BeanEmployee> findEmpByUsername(String firstname) {
+		ArrayList<BeanEmployee> s = null;
+		try {
+			String queryString = "SELECT * from globel_employeeaccount where empFirstname like "+firstname+ "" ;
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			rs1 = ptmt.executeQuery();
+			s = new ArrayList<BeanEmployee>();
+			while(rs1.next()) {
+				BeanEmployee temp = new BeanEmployee();
+				temp.setEmployeeID(rs1.getInt("employeeID"));
+				temp.setFirstName(rs1.getString("empFirstname"));
+				temp.setOtherName(rs1.getString("empOthername"));
+				temp.setLastName(rs1.getString("empSurname"));
+				temp.setDOB(rs1.getString("empDOB"));
+				temp.setStartDate(rs1.getString("empStartDate"));
+				temp.setRole(rs1.getString("empRole"));
+				temp.setSalary(rs1.getFloat("empSalay"));
+				temp.setEmailAddress(rs1.getString("empEmail"));
+				temp.setTel(rs1.getString("empTel"));
+				temp.setManagerID(rs1.getInt("managerID"));
+				s.add(temp);
+
+			}
 	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs1 != null)
+					rs1.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return s;
+
+	}
 }

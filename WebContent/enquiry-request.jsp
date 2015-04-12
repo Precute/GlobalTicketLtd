@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Home || Global Tickets Ltd</title>
+<title>Enquiry || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body onload="myFunction()">
@@ -18,20 +18,48 @@
 		<div id="contentliquid">
 			<div id="contentwrap">
 				<div id="content">
-				<%session = request.getSession(true);
-				Cookie ck[]=request.getCookies();  
-				Cookie user, type;
-				if(ck==null || ck.length==1){
-				user=new Cookie("username", "");
-				type=new Cookie("usertype", "");
-				response.addCookie(user); 
-				response.addCookie(type); 
-				} %>
-					
+				<%   Cookie ck[]=request.getCookies();  
+				String username=null;
+				String type=null;
+				 if (ck != null) {
+				for (Cookie cookie : ck) {
+					   if(cookie.getName().equals("username")){
+						  username=cookie.getValue();
+					   }
+					   if(cookie.getName().equals("usertype")){
+						   type=cookie.getValue();
+					   }
+				   } 
+				}
+				 
+				 if (username == null || username.equals("")){
+					 request.setAttribute("errorMessage", "Please login first!"); 
+					 request.getRequestDispatcher("login.jsp").forward(request, response);  
+					 return;
+					 }
+				 if (!type.equals("customer") && type!=null){
+					 request.setAttribute("errorMessage", "Sorry admin staff cannot login to customer area!"); 
+					 request.getRequestDispatcher("login.jsp").forward(request, response);  
+					 return;
+				 }
+				 
+				  DAOEnquiry econnect = new DAOEnquiry();
+					DAOLogin lconnect = new DAOLogin();
+					 BeanLogin usr =null;
+					 usr=lconnect.retrieveUserByUsername(username);
+					 int custID = usr.getID();
+					%>
+								<input type="button" value="Back" onclick="window.history.back()" /> <br>
+								<p>By Phone<br>
+								Within the UK: 0344 499 6690<br>
+								International:00 800 0926 0926<br>
+  
+				Our UK and International Customer Service team are here to help Monday to Saturday: 8am to 8pm and Sunday: 10am to 6pm GMT and longer during peak periods.<br> 
+				Calls are charged at a basic rate. Please refer to your service provider for all charges. </p>
 					<table>
 					<form action="send-enquiry" onsubmit= "return  verify(this);"  method="post"> 
 							<tr><td>(*)Customer ID :</td> 
-							<td><input type="text" name="custid" placeholder="Customer ID" maxlength="10" required></td></tr>
+							<td><input type="text" name="custid" value ="<%=custID%>"></td></tr>
 							
 							<tr><td>(*)Date: </td>
 							<td><input type="date" id="writeDay" name ="enqdate"/></td></tr>

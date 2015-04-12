@@ -30,6 +30,10 @@ public class BeanEnquiry implements Serializable{
 		eqyNote = note;
 		employeeID = eID;
 	}
+	public BeanEnquiry(String note, int eID) {
+		eqyNote = note;
+		employeeID = eID;
+	}
 
 	public BeanEnquiry(int id, String eqyDs,String note, String enqDt, int cID, int eID) {
 		enquiryID = id;

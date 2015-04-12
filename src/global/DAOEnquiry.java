@@ -87,16 +87,19 @@ public class DAOEnquiry {
 		}
 	}
 	
-	public void updateEnquiry(int ID, String note, int custID) {
+	public void updateEnquiry(int ID, String note, int empID) {
 		try {
 			String queryString = "UPDATE global_customerenquiry SET eqyNote=?, employeeID =? WHERE enquiryID=?";
 			connection = getConnection();
 			ptmt = connection.prepareStatement(queryString);
-			ptmt.setInt(1, ID);
-			ptmt.setString(2, note);
-			ptmt.setInt(3, custID);
+			ptmt.setString(1, note);
+			ptmt.setInt(2, empID);
+			ptmt.setInt(3, ID);
 			ptmt.executeUpdate();
 			System.out.println("Enquiry Updated");
+			System.out.println(ID);
+			System.out.println(note);
+			System.out.println(empID);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

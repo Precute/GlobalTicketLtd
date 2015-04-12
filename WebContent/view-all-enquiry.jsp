@@ -67,7 +67,11 @@
 						
 						<td><%=c.getFirstName()%> <%=c.getLastName()%></td>
 					<%}  %>
-					<td>  </td></tr>
+					<td><form action="reply-enquiry.jsp" method="post">
+					<input type="hidden" name="enquiryid" value="<%=e.getEnquiryID()%>">
+					 <input type="submit" value="Reply" >
+				   </form>
+					</td></tr>
 					<%} %>
 					</table>
 					<%}%>

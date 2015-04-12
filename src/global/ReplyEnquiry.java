@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MakeEnquiry
+ * Servlet implementation class ReplyEnquiry
  */
-@WebServlet("/send-enquiry")
-public class MakeEnquiry extends HttpServlet {
+@WebServlet("/reply-enquiry")
+public class ReplyEnquiry extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /** 
+    /**
      * @see HttpServlet#HttpServlet()
      */
-    public MakeEnquiry() {
+    public ReplyEnquiry() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,13 +37,13 @@ public class MakeEnquiry extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		DAOEnquiry enqconncet = new DAOEnquiry ();
-		String eqyDs = request.getParameter("enquirydetail");
-		String enqDt = request.getParameter("enqdate");
-		int cID = Integer.parseInt(request.getParameter("custid"));		
-		BeanEnquiry enq = new BeanEnquiry( eqyDs, enqDt,  cID );
-		enqconncet.add(enq);
+		int ID = Integer.parseInt(request.getParameter("enqid"));
+		String eqyNote = request.getParameter("enquirynote");
+		int eID = Integer.parseInt(request.getParameter("empid"));		
+		BeanEnquiry enq = new BeanEnquiry( eqyNote, eID );
+		enqconncet.updateEnquiry( ID, eqyNote, eID);
 		RequestDispatcher requestDispatcher = 
-				request.getRequestDispatcher("/customer-account.jsp");
+				request.getRequestDispatcher("/employee-account.jsp");
 			requestDispatcher.forward(request, response);
 			return;
 	}
