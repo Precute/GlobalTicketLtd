@@ -24,6 +24,8 @@ This jsp displays search and the results in a table -->
 					<%int attID = Integer.parseInt(request.getParameter("attractionid"));
 					String attName = request.getParameter("attractionname");
 					%>
+								<input type="button" value="Back" onclick="window.history.back()" /> <br>
+					
 					<h3>Here are the ticket pricing details for <i><u><%=attName%></u></i>:</h3>
 					<table border="1">
 						<tr>
@@ -38,10 +40,15 @@ This jsp displays search and the results in a table -->
 							for (BeanAttraction a : att) { %>
 								<tr><td><%=a.getTicketType()%></td>
 								<td>£<%=a.getTktPrice()%></td>
-								<td></td></tr>
+								<td><select>
+  							<option value=" ">Select</option>
+  							<%for(int x = 0; x<=10; x++) {%>
+  							<option value="<%=x%>"><%=x%></option>
+ 						 	<%} %>
+							</select></td></tr>
 							<%}%>
 							</table>
-												
+									<br><button type="button" onclick="location.href = 'customer-account.jsp';">Go to Your Acount</button>				
 				</div>
 			</div>
 		</div>

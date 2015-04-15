@@ -47,7 +47,7 @@ This jsp displays search and the results in a table -->
 								<td>£<%=a.getTktPrice()%></td></tr>
 							<%}%>
 							</table>
-												
+							<br><button type="button" onclick="location.href = 'booking-page.jsp';">Book Ticket</button>						
 				</div>
 			</div>
 		</div>
