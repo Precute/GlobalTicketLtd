@@ -34,8 +34,7 @@
 				}
 				DAOLogin lconnect = new DAOLogin();
 				DAOBooking bconnect = new DAOBooking();
-				DAOCustomer cconnect = new DAOCustomer();
-				DAOAttraction aconnect = new DAOAttraction();	
+					DAOCustomer cconnect = new DAOCustomer();
 					 BeanLogin usr =null;
 					 String enqd = null;
 					 usr=lconnect.retrieveUserByUsername(username);
@@ -44,23 +43,9 @@
 					 BBD = bconnect.findBookingByCustID(custID);%>
 			<input type="button" value="Back" onclick="window.history.back()" /> <br>
 					  
-         <h3> Here is a list of your all Bookings transactions , <%=username %>!</h3>
-         	<table border="1">
-         	<tr>
-         	<th>Booking ID</th>
-         	<th>Booking Date</th>
-         	<th>Total Cost</th>
-         	</tr>
-         	<%for(BeanBookingDetails bbd: BBD){%>
-         		<tr><td><form action="view-transactions.jsp" method="get"> 
-         		<input type='hidden' name="bookingid" value="<%=bbd.getBookingID()%>">
-				<input type="submit" class="submitLink" name="tickets" value="<%=bbd.getBookingID()%>" ></form></td>
-				<td><%=bbd.getDate()%></td>
-				<td>£<%=bbd.getTotalCost()%></td></tr>
-			 <%}%>
-         	</table>
-			<% if (request.getParameter("tickets") != null) {
-				
+         
+			<% 
+	
 	String bokID= request.getParameter("bookingid");
 			
 			ArrayList<BeanTicketOnBooking> BK=null;
@@ -77,22 +62,9 @@
          	<th>Ticket Total Cost</th>
          	
       </tr>
-      <% for(BeanTicketOnBooking bok: BK ) {
-      		int aID = bok.getAttractionID();
-      		ArrayList<BeanAttraction> ba =null;
-      		ba = aconnect.findAttType( aID);
-      		for(BeanAttraction BA :ba){%>
-      		<tr><td><%=BA.getAttName() %></td>	
-      		<%}
-      		
-      		int tID = bok.getTktTypeID();
-      
-      		ba = aconnect.findtype(tID);
-      		for(BeanAttraction tkt : ba){%>
-    	 
-    	  <td><%=tkt.getTicketType() %></td>
-    	  <%}%>
-    	  
+      <% for(BeanTicketOnBooking bok: BK ) {%>
+    	  <tr><td><%=bok.getAttractionID() %></td>
+    	  <td><%=bok.getTktTypeID() %></td>
     	  <td><%=bok.getTicketDate() %></td>
     	  <td><%=bok.getTicketQty() %></td>
     	  <%float ppp = bok.getTktTotalCost()/bok.getTicketQty();%>
@@ -105,7 +77,7 @@
 	 
 	 </table>
 			
-	<% }%>		
+	<% %>		
 			<br><button type="button" onclick="location.href = 'customer-account.jsp';">Go to Your Acount</button>		
 			<%
     	  

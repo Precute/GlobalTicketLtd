@@ -67,7 +67,7 @@
 		             		<tr><td><%=oDeto.getEnquiryID()%></td>
 		    				<td><%=oDeto.getEnqDescpt()%></td>
 		    				<% if (oDeto.getEnqNote() == null) {
-		    										out.println("<td>We will get back to you as soon as possible.<br>The Global Ticket Limited<br> </td>");
+		    										out.println("<td>We will get back to you as soon as possible.<br><br>Regards <br>The Global Ticket Limited<br> </td>");
 		    									} else
 		    										out.println("<td>" + oDeto.getEnqNote() + "</td>");%>
 		    				<%  int ID = oDeto.getEmpID();

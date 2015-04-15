@@ -49,7 +49,7 @@
 				<a href='tbc'>Customer Profile</a><br>
 				<a href='tbc'>View Bookings</a><br>
 				<br> <br><button type="button" onclick="location.href = 'view-response.jsp';">View enquiry Response</button>	
-			
+				<br> <br><button type="button" onclick="location.href = 'view-transactions.jsp';">View All Transactions </button>
 				</div>
 			</div>
 		</div>
