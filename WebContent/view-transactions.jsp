@@ -41,10 +41,20 @@
 					 usr=lconnect.retrieveUserByUsername(username);
 					 int custID = usr.getID();
 					 ArrayList<BeanBookingDetails> BBD=null;
-					 BBD = bconnect.findBookingByCustID(custID);%>
-			<input type="button" value="Back" onclick="window.history.back()" /> <br>
-					  
-         <h3> Here is a list of your all Bookings transactions , <%=username %>!</h3>
+					 BBD = bconnect.findBookingByCustID(custID);
+					 for(BeanBookingDetails gbd: BBD){
+						  enqd = gbd.getDate();
+						  }%>
+						
+						 <input type="button" value="Back" onclick="window.history.back()" /> <br>		 
+					 <%if( enqd == null || enqd.equals("") ){
+						 
+						 out.println("<h3>Hello, <br> You have no Booking History. <br> Search and Book your Tickets Today! </h3>"); 
+							 
+						 }
+						 
+						 if( enqd != null ){%>
+						 <h3> Here is a list of your all Bookings transactions , <%=username %>!</h3>
          	<table border="1">
          	<tr>
          	<th>Booking ID</th>
@@ -106,10 +116,13 @@
 	 </table>
 			
 	<% }%>		
+						 
+					<% }
+					%>
+					  
+         
 			<br><button type="button" onclick="location.href = 'customer-account.jsp';">Go to Your Acount</button>		
-			<%
-    	  
-    	      	  %>
+			
     	      	  	
 				</div>
 			</div>
