@@ -73,7 +73,7 @@
 									
 							%>
 							<option value="<%=a.getLocationID()%>">
-								 <%=a.getCountry()%></option>
+								<%=a.getCountry()%></option>
 							<%
 								}
 							%>
