@@ -22,6 +22,40 @@ public class DAOAttraction {
 		return conn;
 	}
 	
+	public void add(BeanAttraction a) {
+		try {
+			String queryString = "INSERT INTO global_attractioncatalogue(attName, attDescript, attFullDescription, "
+					+ "attAvailabilityCount, attTypeID, locationID) "
+					+ "VALUES(?,?,?,?,?,?)";
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			ptmt.setString(1, a.getAttName());
+			ptmt.setString(2, a.getAttDescript());
+			ptmt.setString(3, a.getAttFullDescript());
+			ptmt.setInt(4, a.getAttAvailabilityCount());
+			ptmt.setInt(5, a.getAttTypeID());
+			ptmt.setInt(6, a.getLocationID());
+			ptmt.executeUpdate();
+			System.out.println("Data Added Successfully");
+		} catch (SQLException s) {
+			s.printStackTrace();
+		} finally {
+			try {
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException s) {
+				s.printStackTrace();
+			} catch (Exception s) {
+				s.printStackTrace();
+			}
+
+		}
+
+	}
+	
+	
 	public ArrayList<BeanAttraction> findByAttTypeCityCountry(String type, String city, String country) {
 		ArrayList<BeanAttraction> att = null;
 		try {
@@ -250,7 +284,9 @@ public class DAOAttraction {
 				att = new ArrayList<BeanAttraction>();
 				while (rs1.next()) {
 					BeanAttraction temp = new BeanAttraction();
+					temp.setLocationID(rs1.getInt("locationID"));
 					temp.setCountry(rs1.getString("country"));
+					temp.setCity(rs1.getString("city"));
 					att.add(temp);
 
 				}
@@ -358,6 +394,42 @@ public class DAOAttraction {
 					BeanAttraction temp = new BeanAttraction();
 					temp.setAttTypeID(rs1.getInt("attTypeID"));
 					temp.setAttName(rs1.getString("attName"));
+					att.add(temp);
+
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs1 != null)
+						rs1.close();
+					if (ptmt != null)
+						ptmt.close();
+					if (connection != null)
+						connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+			return att;
+		}
+		public ArrayList<BeanAttraction> findTickettype( ) {
+			ArrayList<BeanAttraction> att = null;
+			try {
+				String queryString = "SELECT * FROM global_tickettype ";
+				connection = getConnection();
+				ptmt = connection.prepareStatement(queryString);
+				rs1 = ptmt.executeQuery();
+
+				att = new ArrayList<BeanAttraction>();
+				while (rs1.next()) {
+					BeanAttraction temp = new BeanAttraction();
+					temp.setTktTypeID(rs1.getInt("tktTypeID"));
+					temp.setTicketType(rs1.getString("tktType"));
+					
 					att.add(temp);
 
 				}
