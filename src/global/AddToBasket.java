@@ -39,7 +39,7 @@ public class AddToBasket extends HttpServlet {
 		ArrayList<BeanAttraction> att;
 		
 		//initialise variables
-		att = aconnect.findAttByID(Integer.parseInt(request.getParameter("attractionid")));
+		att = aconnect.findAttByID(Integer.parseInt(request.getParameter("ticket")));
 		int availability = 0;
 		//statement to get stock count
 		
@@ -67,9 +67,8 @@ public class AddToBasket extends HttpServlet {
 					session.setAttribute("previousItems", previousItems); 
 																				
 				}
-				// find out the AttrID passed in from music.jsp or
-				// videos.jsp
-				String newItem = request.getParameter("attractionid");
+				// find out the AttrID passed in 
+				String newItem = request.getParameter("ticket");
 				//send to error if item already in basket otherwise add to basket
 				if(previousItems.contains(newItem)){
 					RequestDispatcher requestDispatcher = request

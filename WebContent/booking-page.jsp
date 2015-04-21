@@ -29,7 +29,7 @@ This jsp displays search and the results in a table -->
 						<tr>
 							<th>Ticket Type</th>
 							<th>Ticket Price</th>
-							<th>Quantity</th>
+							<th>Tick Required Tickets</th>
 						</tr>
 						
 						<%
@@ -38,9 +38,14 @@ This jsp displays search and the results in a table -->
 							for (BeanAttraction a : att) { %>
 								<tr><td><%=a.getTicketType()%></td>
 								<td>£<%=a.getTktPrice()%></td>
-								<td></td></tr>
-							<%}%>
-							</table>
+								
+								<td><form action="submit">
+								<input type="checkbox" name="ticket" value="<%=a.getAttractionID()%> <%=a.getTicketTypeID()%>">
+							    <input type="hidden" name="tickettypeid" value="<%=a.getTicketTypeID()%>">
+								</td></tr>
+								</table>
+							<%}%> <input type="submit" value="Submit"></form>
+							
 												
 				</div>
 			</div>
