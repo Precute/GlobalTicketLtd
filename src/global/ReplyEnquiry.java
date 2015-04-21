@@ -43,7 +43,7 @@ public class ReplyEnquiry extends HttpServlet {
 		BeanEnquiry enq = new BeanEnquiry( eqyNote, eID );
 		enqconncet.updateEnquiry( ID, eqyNote, eID);
 		RequestDispatcher requestDispatcher = 
-				request.getRequestDispatcher("/employee-account.jsp");
+				request.getRequestDispatcher("/index.jsp");
 			requestDispatcher.forward(request, response);
 			return;
 	}
