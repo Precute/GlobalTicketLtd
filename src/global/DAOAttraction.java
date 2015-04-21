@@ -56,6 +56,78 @@ public class DAOAttraction {
 	}
 	
 	
+	public void addPrice(BeanAttraction a) {
+		try {
+			String queryString = "INSERT INTO global_attractionpricelist(attractionID, tktTypeID, ticketPrice) "
+					+ "VALUES(?,?,?)";
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			ptmt.setInt(1, a.getAttractionID());
+			ptmt.setInt(2, a.getTicketTypeID());
+			ptmt.setDouble(3, a.getTktPrice());
+			
+			ptmt.executeUpdate();
+			System.out.println("Data Added Successfully");
+		} catch (SQLException s) {
+			s.printStackTrace();
+		} finally {
+			try {
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException s) {
+				s.printStackTrace();
+			} catch (Exception s) {
+				s.printStackTrace();
+			}
+
+		}
+
+	}
+	
+	public BeanAttraction findAllCatalogue(String attName, String descript) {
+		BeanAttraction att = null;
+		try {
+			String queryString = "SELECT * FROM global_attractioncatalogue WHERE attName = "+attName+"  AND attDescript ="+descript+"";
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			rs1 = ptmt.executeQuery();
+			att = new BeanAttraction();
+			while(rs1.next()) {
+				BeanAttraction temp = new BeanAttraction();
+				temp.setAttractionID(rs1.getInt("attractionID"));
+				temp.setAttName(rs1.getString("attName"));
+				temp.setAttDescript(rs1.getString("attDescript"));
+				temp.setAttFullDescript(rs1.getString("attFullDescription"));
+				temp.setAttAvailabilityCount(rs1.getInt("attAvailabilityCount"));
+				temp.setAttType(rs1.getString("attType"));
+				temp.setCity(rs1.getString("city"));
+				temp.setCountry(rs1.getString("country"));
+				att=temp;
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs1 != null)
+					rs1.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return att;
+	}
+	
+	
 	public ArrayList<BeanAttraction> findByAttTypeCityCountry(String type, String city, String country) {
 		ArrayList<BeanAttraction> att = null;
 		try {
@@ -276,7 +348,7 @@ public class DAOAttraction {
 		public ArrayList<BeanAttraction> findAllCountry() {
 			ArrayList<BeanAttraction> att = null;
 			try {
-				String queryString = "SELECT DISTINCT country FROM global_location";
+				String queryString = "SELECT * FROM global_location";
 				connection = getConnection();
 				ptmt = connection.prepareStatement(queryString);
 				rs1 = ptmt.executeQuery();

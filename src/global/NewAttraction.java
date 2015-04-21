@@ -37,7 +37,7 @@ public class NewAttraction extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 	DAOAttraction aconnect = new DAOAttraction ();
-
+	int attractionID;
 	String aName = request.getParameter("attname");
 	String aDescript = request.getParameter("attdescript");
 	String aDescript1 = request.getParameter("attdescript1");
@@ -45,8 +45,17 @@ public class NewAttraction extends HttpServlet {
 	int attType = Integer.parseInt(request.getParameter("atttype"));
 	int attLocation = Integer.parseInt(request.getParameter("attlocation"));
 	
-	BeanAttraction a = new BeanAttraction ( aName, aDescript,aDescript1, attNo, attType, attLocation);
+	BeanAttraction a = new BeanAttraction ( aName, aDescript, aDescript1, attNo, attType, attLocation);
 	aconnect.add(a);
+	
+	a = aconnect.findAllCatalogue(aName,aDescript); 
+	attractionID = a.getAttractionID() ;
+	
+	int tktType = Integer.parseInt(request.getParameter("type"));
+	double tktPrice = Double.parseDouble(request.getParameter("price"));
+	
+	BeanAttraction ab = new BeanAttraction(attractionID,tktType, tktPrice);
+	aconnect.addPrice(ab);
 	
 	}
 

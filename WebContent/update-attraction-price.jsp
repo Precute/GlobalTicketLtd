@@ -39,17 +39,6 @@
 				<input type="button" value="Back" onclick="window.history.back()" /> <br>
 					
 					<form action ="update-catalogue" method ="post">
-					<tr><td>(*)Attraction Name:</td> 
-					<td><input type="text" name="attname" placeholder="Attraction Name" maxlength="50" required></td></tr><br><br>
-					
-					<tr><td>(*)Attraction Description :</td><br><br>
-					<td><textarea name="attdescript" placeholder="Enter a brief description of attraction " rows="10" cols="60" maxlength="500" required ></textarea></td></tr><br>
-					
-					<tr><td>(*)Full Attraction Description :</td><br><br>
-					<td><textarea name="attdescript1" placeholder="Enter a detailed description of attraction " rows="10" cols="100" maxlength="5000" required></textarea></td></tr><br><br>
-					
-					<tr><td>(*)Numbers of Ticket Available:</td> 
-					<td><input type="number" name="attnumber" placeholder="Ticket Number" maxlength="20" required></td></tr><br>
 					
 					<tr><td>(*)Attraction Type:</td> 
 					<td>	<select name="atttype" required>
@@ -63,25 +52,7 @@
 								}
 							%>
 						</select>
-					</tr><br>
-					
-					<tr><td>(*)Location:</td> 
-					<td><select name="attlocation" required>
-							<option value=" ">Country</option>
-							<%
-								for (BeanAttraction a : country) {
-									
-							%>
-							<option value="<%=a.getLocationID()%>">
-								<%=a.getCity()%>, <%=a.getCountry()%></option>
-							<%
-								}
-							%>
-							</select> <br><br><input type="submit" value="Submit" name="submit"><br><br>
-							
-							
-						
-						
+					</tr><br>	
 					</form>
 
 						
