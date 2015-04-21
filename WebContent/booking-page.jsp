@@ -40,7 +40,7 @@ This jsp displays search and the results in a table -->
 							for (BeanAttraction a : att) { %>
 								<tr><td><%=a.getTicketType()%></td>
 								<td>£<%=a.getTktPrice()%></td>
-<<<<<<< HEAD
+
 								
 								<td><form action="submit">
 								<input type="checkbox" name="ticket" value="<%=a.getAttractionID()%> <%=a.getTicketTypeID()%>">
@@ -50,17 +50,17 @@ This jsp displays search and the results in a table -->
 							<%}%> <input type="submit" value="Submit"></form>
 							
 												
-=======
+
 								<td><select>
   							<option value=" ">Select</option>
   							<%for(int x = 0; x<=10; x++) {%>
   							<option value="<%=x%>"><%=x%></option>
  						 	<%} %>
 							</select></td></tr>
-							<%}%>
+							
 							</table>
-									<br><button type="button" onclick="location.href = 'customer-account.jsp';">Go to Your Acount</button>				
->>>>>>> origin/master
+									<br><button type="button" onclick="location.href = 'customer-account.jsp';">Go to Your Acccunt</button>				
+
 				</div>
 			</div>
 		</div>
