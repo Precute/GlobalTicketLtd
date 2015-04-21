@@ -21,6 +21,7 @@ This jsp displays search and the results in a table -->
 		<div id="contentliquid">
 			<div id="contentwrap">
 				<div id="content">
+				<input type="button" value="Back" onclick="window.history.back()" /> <br>
 					<i>Use this search function to find attractions to book <br>(If
 						search isn't required, pressing 'Search' displays all attraction)
 					</i> <br> <br>
@@ -139,6 +140,7 @@ This jsp displays search and the results in a table -->
 
 						}
 					%>
+					<br><button type="button" onclick="location.href = 'customer-account.jsp';">Go to Your Acount</button>	
 				</div>
 			</div>
 		</div>

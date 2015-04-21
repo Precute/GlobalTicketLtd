@@ -53,6 +53,16 @@ public class BeanAttraction implements Serializable{
 		locationID = locID;
 	}
 	
+	public BeanAttraction( String aName, String aDscript, String aFullDescript, int aAvalCt, int aTypeID, int locID) {
+		// for catalogue
+		attName  = aName;
+		attDescript = aDscript;
+		attFullDescript=aFullDescript;
+		attAvailabilityCount = aAvalCt;
+		attTypeID = aTypeID;
+		locationID = locID;
+	}
+	
 	public BeanAttraction(int locationID, String locCity, String locCountry) {
 		this.locationID = locationID;
 		city = locCity;

@@ -27,6 +27,7 @@
 				response.addCookie(user); 
 				response.addCookie(type); 
 				} %>
+				<input type="button" value="Back" onclick="window.history.back()" /> <br>
 					<table>
 					<form action="add-customer" onsubmit= "return  verify(this);"  method="post"> 
 							<tr><td>(*)First Name:</td> 

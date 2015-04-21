@@ -47,8 +47,9 @@
 				<h3>Welcome to the customer area. You can view your bookings and customer profile here.</h3>
 				
 				<a href='tbc'>Customer Profile</a><br>
-				<a href='tbc'>View Bookings</a>
-			
+				<a href='tbc'>View Bookings</a><br>
+				<br> <br><button type="button" onclick="location.href = 'view-response.jsp';">View enquiry Response</button>	
+				<br> <br><button type="button" onclick="location.href = 'view-transactions.jsp';">View All Transactions </button>
 				</div>
 			</div>
 		</div>

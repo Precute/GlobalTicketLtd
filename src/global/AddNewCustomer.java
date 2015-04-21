@@ -2,7 +2,7 @@ package global;
 
 import java.io.IOException;
 
-
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -61,6 +61,7 @@ public class AddNewCustomer extends HttpServlet {
 		
 		BeanLogin l = new BeanLogin(custID, username, password, userType);
 		lconnect.addUser(l); 
+		
 	}
 
 }

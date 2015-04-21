@@ -84,7 +84,7 @@ public class DAOBooking {
 
 	}
 
-	//find order by date and customer id
+	//find ticket by date and customer id
 	public BeanBookingDetails findOrderByDateAndCustID(String date, int custID) {
 		BeanBookingDetails det = null;
 		try {
@@ -125,9 +125,58 @@ public class DAOBooking {
 		return det;
 
 	}
+	//find ticket by date and customer id
+		public ArrayList<BeanTicketOnBooking> findBookingByBookingID( String id) {
+			ArrayList<BeanTicketOnBooking> det = null;
+			try {
+				String queryString = "SELECT * FROM global_ticketonbooking WHERE bookingID = "+id+"";
+						/**" SELECT a.attractionID, t.tktTypeID, t.ticketDate, t.ticketQty, t.tktTotalCost "
+						+ "FROM global_ticketonbooking t, global_attractioncatalogue a "
+						+ "where a.attractionID = t.attractionID and t.bookingID = "+id+"";
+				
+				SELECT a.attName, t.tktTypeID, t.ticketDate, t.ticketQty, t.tktTotalCost "
+						+ "FROM global_ticketonbooking t, global_attractioncatalogue a where a.attractionID = t.attractionID 
+						and t.bookingID = "+Integer.parseInt(id)+" ;
+				**/
+				connection = getConnection();
+				ptmt = connection.prepareStatement(queryString);
+				rs1 = ptmt.executeQuery();
 
+				det = new ArrayList<BeanTicketOnBooking>();
+				while (rs1.next()){
+					BeanTicketOnBooking temp = new BeanTicketOnBooking();
+					temp.setBookingID(rs1.getInt("bookingid"));
+					temp.setAttractionID(rs1.getInt("attractionid"));
+					temp.setTktTypeID(rs1.getInt("tkttypeid"));
+					temp.setTicketDate(rs1.getString("ticketdate"));
+					temp.setTicketQty(rs1.getInt("ticketqty"));
+					temp.setTktTotalCost(rs1.getFloat("tkttotalcost"));
+					det.add(temp);
+
+				}
+		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (rs1 != null)
+						rs1.close();
+					if (ptmt != null)
+						ptmt.close();
+					if (connection != null)
+						connection.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+
+			}
+			return det;
+
+		}
 	//find order by customer id
-	public ArrayList<BeanBookingDetails> findOrderByCustID(int custID) {
+	public ArrayList<BeanBookingDetails> findBookingByCustID(int custID) {
 		ArrayList<BeanBookingDetails> det = null;
 		try {
 			String queryString = "SELECT bookingid, DATE_FORMAT(date(bookingdate),'%d/%m/%Y') AS date, bookingtotalcost, customerid FROM global_bookingdetails WHERE customerid = "+custID+" ";
@@ -208,5 +257,6 @@ public class DAOBooking {
 		return det;
 
 	}
+	
 
 }

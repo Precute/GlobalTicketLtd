@@ -46,6 +46,7 @@ This jsp displays search and the results in a table -->
 								<tr><td><%=a.getTicketType()%></td>
 								<td>£<%=a.getTktPrice()%></td></tr>
 							<%}%>
+								<input type="button" value="Back" onclick="window.history.back()" /> <br>
 							</table>
 												
 				</div>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Customers || Global Tickets Ltd</title>
+<title>Home || Global Tickets Ltd</title>
 <link rel="stylesheet" type="text/css" href="design.css" />
 </head>
 <body>
@@ -27,40 +27,52 @@
 				response.addCookie(user); 
 				response.addCookie(type); 
 				}
-  				DAOCustomer cconnect = new DAOCustomer();%>
-  				<input type="button" value="Back" onclick="window.history.back()" /> <br>
+			DAOEnquiry econnect = new DAOEnquiry();
+			DAOCustomer cconnect = new DAOCustomer();%>
+			<input type="button" value="Back" onclick="window.history.back()" /> <br>
 				
-				<i>Use this search function finds all Customer <br>(If
-						search isn't required, pressing 'View' to displays all Customers)
+				<i>View all Enquiry from Customers <br>(Ensure the Customer reply as soon as possible)
 					</i> <br> <br>
 				
-				<form action="view-all-customer.jsp" method="get">
+				<form action="view-all-enquiry.jsp" method="get">
 				<%
 				
-				ArrayList<BeanCustomer> allCust = cconnect.viewAllCustDetail();
+				ArrayList<BeanEnquiry> eqy = econnect.viewAllEnquiry();
 						%>
-				
-				
-				 <input type="submit" value="View" name="view">
+				<input type="submit" value="View Customer Enquiry" name="view">
 				</form>
 				<%
 					if (request.getParameter("view") != null) {
 				%>
-					<h2>Here are the details of all customers:</h2>
+					<h2>Here are all enquiry requested by our customers:</h2>
 					<table border="1">
 						<tr>
-							<th>Customer ID</th>
-							<th>Name</th>
-							<th>Country</th>
+							<th>Enquiry ID</th>
+							<th>Date</th>
+							<th>Description</th>
+							<th>Customer ID </th>
+							<th>Customer Name </th>
+							<th>Reply Enquiry</th>
 						</tr>
 						
-					<% ArrayList<BeanCustomer> cust = cconnect.viewAllCustDetail();
+				<% ArrayList<BeanEnquiry> enq = econnect.viewAllEnquiry();
+					for(BeanEnquiry e : enq){
+					 int id = e.getCustID();%>
+						<tr><td><%=e.getEnquiryID()%></td>
+						<td><%=e.getEnqDate() %></td>
+						<td><%=e.getEnqDescpt()%></td>
+						<td><%=id%></td>
+						 <% ArrayList<BeanCustomer> cust = cconnect.viewCustByID(id);
 					for(BeanCustomer c : cust){%>
-						<tr><td><%=c.getCustID()%></td>
+						
 						<td><%=c.getFirstName()%> <%=c.getLastName()%></td>
-						<td><%=c.getCountry()%></td></tr>
+					<%}  %>
+					<td><form action="reply-enquiry.jsp" method="post">
+					<input type="hidden" name="enquiryid" value="<%=e.getEnquiryID()%>">
+					 <input type="submit" value="Reply" >
+				   </form>
+					</td></tr>
 					<%} %>
-					
 					</table>
 					<%}%>
 				</div>
