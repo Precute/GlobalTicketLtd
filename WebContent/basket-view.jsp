@@ -6,6 +6,13 @@ This jsp displays search and the results in a table -->
 <%
 	DAOAttraction aconnect = new DAOAttraction();
 %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="design.css" />
+</head>
+<body>
 				
 					<%	try{
 							int arrSize;
@@ -22,7 +29,7 @@ This jsp displays search and the results in a table -->
 		      if (previousItems.size() == 0) {
 		        out.println("<I>The basket is empty</I>");
 		      } else {%>
-		    	  <table border="1">
+		    	  <table border="0">
 					<tr>
 						<th>Attraction Name</th>
 						<th>Ticket Type</th>
@@ -48,7 +55,7 @@ This jsp displays search and the results in a table -->
 
 		        <% 
 		      }
-		    } %>
+		    } %> </table>
 		    		<form action="index.jsp" method="post">
 		    	<input type="submit" value="Edit Items" name="edit">
 		    	<input type="submit" value="Reset Basket" name="submit">
@@ -75,4 +82,5 @@ This jsp displays search and the results in a table -->
 					}catch(NullPointerException e){%>
 						<i>The basket is empty</i>
 					<% }%>
-			
+	</body>
+</html>		

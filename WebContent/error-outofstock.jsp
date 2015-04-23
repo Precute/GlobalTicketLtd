@@ -32,7 +32,7 @@ This jsp displays an error if an item is out of stock-->
 		</div>
 		<div id="leftcolumnwrap">
 					<div id="leftcolumn">
-			bask
+			<jsp:include page="basket-view.jsp" />
  				<hr>
 					<jsp:include page="loginform.jsp" />
 			</div>

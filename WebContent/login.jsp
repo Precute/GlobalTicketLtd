@@ -27,7 +27,7 @@ This jsp displays the login page -->
 		</div>
 		<div id="leftcolumnwrap">
 			<div id="leftcolumn">
-			bask
+			<jsp:include page="basket-view.jsp" />
  				
 			</div>
 		</div>

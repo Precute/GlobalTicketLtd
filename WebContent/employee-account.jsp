@@ -56,7 +56,7 @@
 		</div>
 		<div id="leftcolumnwrap">
 			<div id="leftcolumn">
-			bask
+			<jsp:include page="basket-view.jsp" />
  				<hr>
 					<jsp:include page="loginform.jsp" />
 			</div>

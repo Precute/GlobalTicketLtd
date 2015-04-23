@@ -105,8 +105,6 @@ This jsp displays search and the results in a table -->
 		</div>
 		<div id="leftcolumnwrap">
 					<div id="leftcolumn">
-			basket
- 				<hr>
 				<jsp:include page="loginform.jsp" />
 			</div>
 			</div>
