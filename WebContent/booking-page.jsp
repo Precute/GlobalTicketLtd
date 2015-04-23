@@ -2,7 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="global.*,java.util.*"%>
 <!-- 
-This jsp displays search and the results in a table -->
+This jsp displays search and the results in a table 
+	 -->
 <%
 	DAOAttraction aconnect = new DAOAttraction();
 %>
@@ -36,29 +37,20 @@ This jsp displays search and the results in a table -->
 						
 						<%
 							ArrayList<BeanAttraction> att = aconnect.findPricesByAttID(attID);
-						
+					
 							for (BeanAttraction a : att) { %>
 								<tr><td><%=a.getTicketType()%></td>
 								<td>£<%=a.getTktPrice()%></td>
-
+								<td><form action="add-to-basket" method="post"><input type="checkbox" name="ticket" value="<%=a.getTicketTypeID()%>-<%=a.getAttractionID()%>"></td></tr>
 								
-								<td><form action="submit">
-								<input type="checkbox" name="ticket" value="<%=a.getAttractionID()%> <%=a.getTicketTypeID()%>">
-							    <input type="hidden" name="tickettypeid" value="<%=a.getTicketTypeID()%>">
-								</td></tr>
-								</table>
-							<%}%> <input type="submit" value="Submit"></form>
+								
+							<%}%></table><input type="submit" value="Submit"></form>
 							
 												
 
-								<td><select>
-  							<option value=" ">Select</option>
-  							<%for(int x = 0; x<=10; x++) {%>
-  							<option value="<%=x%>"><%=x%></option>
- 						 	<%} %>
-							</select></td></tr>
 							
-							</table>
+							
+						
 									<br><button type="button" onclick="location.href = 'customer-account.jsp';">Go to Your Acccunt</button>				
 
 				</div>

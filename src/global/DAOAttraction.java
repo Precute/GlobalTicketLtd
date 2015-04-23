@@ -239,7 +239,7 @@ public class DAOAttraction {
 	public ArrayList<BeanAttraction> findPricesByAttID(int attID) {
 		ArrayList<BeanAttraction> att = null;
 		try {
-			String queryString = "SELECT c.attractionID, tktType, ticketPrice "
+			String queryString = "SELECT c.attractionID, tt.tktType, tt.tktTypeID, ticketPrice "
 					+ "FROM global_tickettype tt, global_attractionpricelist p, global_attractioncatalogue c "
 					+ "WHERE p.attractionID=c.attractionID "
 					+ "AND p.tktTypeID=tt.tktTypeID "
@@ -254,6 +254,7 @@ public class DAOAttraction {
 				BeanAttraction temp = new BeanAttraction();
 				temp.setAttractionID(rs1.getInt("attractionID"));
 				temp.setTicketType(rs1.getString("tktType"));
+				temp.setTktTypeID(rs1.getInt("tktTypeID"));
 				temp.setTktPrice(rs1.getFloat("ticketPrice"));
 				att.add(temp);
 
@@ -279,7 +280,53 @@ public class DAOAttraction {
 		return att;
 
 	}
+	public BeanAttraction findPriceByAttIDTicID(int attID, int ticID) {
+		BeanAttraction att = null;
+		try {
+			String queryString = "SELECT c.attractionID, c.attName, tktType, tt.tktTypeID, ticketPrice "
+					+ "FROM global_tickettype tt, global_attractionpricelist p, global_attractioncatalogue c "
+					+ "WHERE p.attractionID=c.attractionID "
+					+ "AND p.tktTypeID=tt.tktTypeID "
+					+ "AND c.attractionID="+attID+" "
+					+ "AND tt.tktTypeID="+ticID+" ";
+					
+			connection = getConnection();
+			ptmt = connection.prepareStatement(queryString);
+			rs1 = ptmt.executeQuery();
+
+			att = new BeanAttraction();
+			if(rs1.next()){
+			
+				BeanAttraction temp = new BeanAttraction();
+				temp.setAttractionID(rs1.getInt("attractionID"));
+				temp.setAttName(rs1.getString("attName"));
+				temp.setTicketType(rs1.getString("tktType"));
+				temp.setTktTypeID(rs1.getInt("tktTypeID"));
+				temp.setTktPrice(rs1.getFloat("ticketPrice"));
+				att=temp;
+
+			}
 	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs1 != null)
+					rs1.close();
+				if (ptmt != null)
+					ptmt.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		return att;
+
+	}
 	//get minimum and maximum prices in database and return in array
 		public Float[] getAttTicketsMinMaxPrice() {
 			Float[] minMax= new Float[2];

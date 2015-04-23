@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class AddToBasket
  * Servlet to add an item to a basket
  */
-@WebServlet("/add-to-order")
+@WebServlet("/add-to-basket")
 public class AddToBasket extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	DAOAttraction aconnect = new DAOAttraction();
@@ -37,9 +37,12 @@ public class AddToBasket extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		//declare variables
 		ArrayList<BeanAttraction> att;
-		
+		String ticket=request.getParameter("ticket");
+		String ticketSplit[]=ticket.split("-");
+		String ticketTypeID=ticketSplit[0];
+		String attID=ticketSplit[1];
 		//initialise variables
-		att = aconnect.findAttByID(Integer.parseInt(request.getParameter("ticket")));
+		att = aconnect.findAttByID(Integer.parseInt(attID));
 		int availability = 0;
 		//statement to get stock count
 		
@@ -67,7 +70,7 @@ public class AddToBasket extends HttpServlet {
 					session.setAttribute("previousItems", previousItems); 
 																				
 				}
-				// find out the AttrID passed in 
+				// find out the AttID passed in 
 				String newItem = request.getParameter("ticket");
 				//send to error if item already in basket otherwise add to basket
 				if(previousItems.contains(newItem)){
