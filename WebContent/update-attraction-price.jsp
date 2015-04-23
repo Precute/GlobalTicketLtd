@@ -68,7 +68,7 @@
 								  || form.attdescript1.value.replace(/\s+/g,'') == ''
 								  || form.attnumber.value.replace(/\s+/g,'') == ''
 								  || form.atttype.value.replace(/\s+/g,'') == ''
-								|| form.attlocation.value.replace(/\s+/g,'') == ''
+									|| form.attlocation.value.replace(/\s+/g,'') == ''
 									|| form.tkttype.value.replace(/\s+/g,'') == ''
 									|| form.attprice.value.replace(/\s+/g,'') == ''
 								  ) {
