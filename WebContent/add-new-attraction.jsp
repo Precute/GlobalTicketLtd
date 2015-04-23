@@ -104,7 +104,7 @@
 						    alert('Please ensure all mandatory fields(*) are filled.');
 						    return false;
 						  }
-						  }
+						  }				
 					</script>
 					
 				</div>

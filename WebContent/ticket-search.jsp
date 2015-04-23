@@ -67,7 +67,7 @@ This jsp displays search and the results in a table -->
 							%>
 						</select>
 						
-						<br> <input type="submit" value="Search" name="search">
+						<br><br><br> <input type="submit" value="Search" name="search">
 					</form>
 
 

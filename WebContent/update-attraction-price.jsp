@@ -30,6 +30,8 @@
 				} %>
 				<%
 				DAOAttraction aconnect = new DAOAttraction();
+			
+				
 				%>
 				<%
 							ArrayList<BeanAttraction> atype = aconnect.findAllAttType();
@@ -38,38 +40,61 @@
 						%>
 				<input type="button" value="Back" onclick="window.history.back()" /> <br>
 					
-					<form action ="update-catalogue" method ="post">
+					<form action ="price-update" method ="post">
 					
-					<tr><td>(*)Attraction Type:</td> 
-					<td>	<select name="atttype" required>
+					<tr><td>(*)Ticket Type:</td> 
+					<td>	<select name="type" required>
 							<option value=" ">Attraction Type</option>
 							<%
-								for (BeanAttraction a : atype) {
+								for (BeanAttraction t : ticket) {
 							%>
-							<option value="<%=a.getAttTypeID()%>">
-								 <%=a.getAttType()%></option>
+							<option value="<%=t.getTicketTypeID()%>">
+								 <%=t.getTicketType()%></option>
 							<%
 								}
 							%>
 						</select>
-					</tr><br>	
-					</form>
-
 						
+					</tr><br>	
+					<tr><td>(*)Enter Price:</td> 
+					<td><input type ="text" name="attprice" placeholder ="0.00" ></td>
+					</tr>
+					</form>
+					
+
+					<%if (request.getParameter("addmore") !=null ) {%>
+					<form action ="update-attraction-price.jsp" method ="get">
+					
+					<tr><td>(*)Ticket Type:</td> 
+					<td>	<select name="tkttype" required>
+							<option placeholder =" ">Attraction Type</option>
+							<%
+								for (BeanAttraction t : ticket) {
+							%>
+							<option value="<%=t.getTicketTypeID()%>">
+								 <%=t.getTicketType()%></option>
+							<%
+								}
+							%>
+						</select>
+						
+					</tr><br>	
+					<tr><td>(*)Enter Price:</td> 
+					<td><input type ="text" name="attprice" placeholder ="0.00" ></td>
+					</tr>
+					</form>	
+						
+					<%}%>	
 						
 							
 					
-					
+					<br><input type="submit"  name ="addmore" value ="Add More Ticket"/>
+					<br><input type ="submit" name ="submit" value ="Sumbit"/><br>
 					
 					<script>
 					function verify(form) {
-						  if (form.attname.value.replace(/\s+/g,'') == '' 
-								  || form.attdescript.value.replace(/\s+/g,'') == '' 
-								  || form.attdescript1.value.replace(/\s+/g,'') == ''
-								  || form.attnumber.value.replace(/\s+/g,'') == ''
-								  || form.atttype.value.replace(/\s+/g,'') == ''
-									|| form.attlocation.value.replace(/\s+/g,'') == ''
-									|| form.tkttype.value.replace(/\s+/g,'') == ''
+						  if (
+									form.tkttype.value.replace(/\s+/g,'') == ''
 									|| form.attprice.value.replace(/\s+/g,'') == ''
 								  ) {
 						    alert('Please ensure all mandatory fields(*) are filled.');
