@@ -41,7 +41,7 @@ This jsp displays search and the results in a table
 							for (BeanAttraction a : att) { %>
 								<tr><td><%=a.getTicketType()%></td>
 								<td>£<%=a.getTktPrice()%></td>
-								<td><form action="add-to-basket" method="post"><input type="checkbox" name="ticket" value="<%=a.getTicketTypeID()%>-<%=a.getAttractionID()%>"></td></tr>
+								<td><form action="add-to-basket" method="post"><input type="radio" name="ticket" value="<%=a.getTicketTypeID()%>-<%=a.getAttractionID()%>"></td></tr>
 								
 								
 							<%}%></table><input type="submit" value="Submit"></form>
